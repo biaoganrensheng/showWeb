@@ -1,0 +1,87 @@
+/*
+Error: Functions may not be defined within control directives or other mixins.
+        on line 104 of mdb/free/data/_mixins.scss
+        from line 37 of mdb.scss
+
+99: }
+100: 
+101: // New mixins
+102: @mixin make-button($name, $color) {
+103:   .btn-#{$name} {
+104:     @function set-notification-text-color($color) {
+105:       @if (lightness($color) > 80) {
+106:         @return $black; // Lighter backgorund, return dark color
+107:       } @else {
+108:         @return $white; // Darker background, return light color
+109:       }
+
+Backtrace:
+mdb/free/data/_mixins.scss:104
+mdb.scss:37
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/check_nesting.rb:15:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `map'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/check_nesting.rb:51:in `visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:38:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/check_nesting.rb:17:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `map'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/check_nesting.rb:51:in `visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/check_nesting.rb:75:in `visit_mixindef'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/check_nesting.rb:17:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `map'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/check_nesting.rb:51:in `visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/check_nesting.rb:59:in `visit_root'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/check_nesting.rb:17:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:24:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/perform.rb:328:in `block in visit_import'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/stack.rb:88:in `block in with_import'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/stack.rb:135:in `with_frame'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/stack.rb:88:in `with_import'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/perform.rb:326:in `visit_import'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/stack.rb:79:in `block in with_base'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/stack.rb:135:in `with_frame'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/stack.rb:79:in `with_base'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/perform.rb:162:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `map'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/perform.rb:161:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin/compiler.rb:209:in `each'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin.rb:82:in `update_stylesheets'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/exec/sass_scss.rb:51:in `process_result'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/exec/base.rb:52:in `parse'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/lib/sass/exec/base.rb:19:in `parse!'
+D:/SetSystem/LPFrobay/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.5.4/bin/scss:13:in `<top (required)>'
+D:/SetSystem/LPFrobay/Ruby23-x64/bin/scss:22:in `load'
+D:/SetSystem/LPFrobay/Ruby23-x64/bin/scss:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Functions may not be defined within control directives or other mixins.\A         on line 104 of mdb/free/data/_mixins.scss\A         from line 37 of mdb.scss\A \A 99: }\A 100: \A 101: // New mixins\A 102: @mixin make-button($name, $color) {\A 103:   .btn-#{$name} {\A 104:     @function set-notification-text-color($color) {\A 105:       @if (lightness($color) > 80) {\A 106:         @return $black; // Lighter backgorund, return dark color\A 107:       } @else {\A 108:         @return $white; // Darker background, return light color\A 109:       }"; }

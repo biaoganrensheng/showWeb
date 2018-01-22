@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>管理后台</title>
+    <link rel="shortcut icon" href="Ms.ico" type="images/x-icon"/>
+    <link rel="icon" href="Ms.ico" type="images/x-icon"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- GDT-->
+    <link rel="stylesheet" href="src/plugins/GDT/jquery.mCustomScrollbar.css">
+    <!--TOT-->
+    <link rel="stylesheet" href="src/plugins/TOT/css/jquery.toolbar.css">
+    <!-- MDB -->
+    <link rel="stylesheet" href="src/plugins/MDB/css/layout.css">
+    <link rel="stylesheet" href="src/css/define.css">
+</head>
+<body>
+<div class="g-index">
+    <header class="g-header">
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+            <a class="navbar-brand" href="#">
+                <img src="src/images/logo.png" alt="后台管理系统">
+                后台管理系统
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto" id="click_navbar">
+                    <li class="nav-item active" id="trigger_index">
+                        <a class="nav-link waves-effect waves-light topic" data-href="test/0.html" data-changeIf="IF_0">主页</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown">
+                            业务中心
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-unique">
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/1.html" data-changeIf="IF_1">业务中心1</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/2.html" data-changeIf="IF_2">业务中心2</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/3.html" data-changeIf="IF_3">业务中心3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown">
+                            数据中心
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-unique">
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/4.html" data-changeIf="IF_4">数据中心1</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/5.html" data-changeIf="IF_5">数据中心2</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/6.html" data-changeIf="IF_6">数据中心3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown">
+                            信息交流
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-unique">
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/7.html" data-changeIf="IF_7">信息交流1</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/8.html" data-changeIf="IF_8">信息交流2</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/9.html" data-changeIf="IF_9">信息交流3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown">
+                            统计分析
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-unique">
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/10.html" data-changeIf="IF_10">统计分析1</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/11.html" data-changeIf="IF_11">统计分析2</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/12.html" data-changeIf="IF_12">统计分析3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown">
+                            系统管理
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-unique">
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/13.html" data-changeIf="IF_13">系统管理1</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/14.html" data-changeIf="IF_14">系统管理2</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/15.html" data-changeIf="IF_15">系统管理3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="li_more">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light more-nav" data-toggle="dropdown">
+                            <img src="src/images/more.png" alt="more" class="more-img">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-unique">
+                            <a class="dropdown-item waves-effect waves-light" href="javascript:;" id="QQ">QQ</a>
+                            <a class="dropdown-item waves-effect waves-light" href="javascript:;" id="WX">微信</a>
+                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item waves-effect waves-light" href="javascript:;" id="ZQ">足球</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons paddingRt-navbar">
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect waves-light">犬夜叉,欢迎登陆</a>
+                    </li>
+                    <li class="nav-item avatar dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                            src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                            class="img-fluid rounded-circle z-depth-0"></a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-purple"
+                             aria-labelledby="navbarDropdownMenuLink-5">
+                            <a class="dropdown-item waves-effect waves-light" href="javascript:;">编辑个人资料</a>
+                            <a class="dropdown-item waves-effect waves-light" href="javascript:;">个性化定制</a>
+                            <a class="dropdown-item waves-effect waves-light" href="javascript:;">退出登录</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="stylish-color btn-container">
+                <div class="row" >
+                    <div class="col-sm-11">
+                        <input type="hidden" id="activeTab" value="">
+                        <div class="btn-container-overflow">
+                            <div class="btn-container-items">
+                                <!--btn show-->
+                             </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-sm-auto text-sm-right paddingRt-edit avatar dropdown">
+                        <a class="btn-floating peach-gradient btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-edit"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-purple editIcon">
+                            <a class="dropdown-item  waves-effect waves-light" href="javascript:;" id="close_cur">关闭当前标签</a>
+                            <a class="dropdown-item  waves-effect waves-light" href="javascript:;" id="close_other">关闭其他标签</a>
+                            <a class="dropdown-item  waves-effect waves-light" href="javascript:;" id="close_all">关闭所有标签</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tooltip-defined">
+                <div id="toolbar-options-QQ" class="hidden">
+                    <a data-href="test/16.html" data-changeIf="IF_16" class="more-tabs">QQ音乐</a>
+                    <a data-href="test/17.html" data-changeIf="IF_17" class="more-tabs">QQ游戏</a>
+                    <a data-href="test/18.html" data-changeIf="IF_18" class="more-tabs">QQ邮箱</a>
+                </div>
+                <div id="toolbar-options-WX" class="hidden">
+                    <a data-href="test/19.html" data-changeIf="IF_19" class="more-tabs">微信挑一挑</a>
+                    <a data-href="test/20.html" data-changeIf="IF_20" class="more-tabs">微信小程序</a>
+                    <a data-href="test/21.html" data-changeIf="IF_21" class="more-tabs">微信公众号</a>
+                </div>
+                <div id="toolbar-options-ZQ" class="hidden">
+                    <a data-href="test/22.html" data-changeIf="IF_22" class="more-tabs">贝克汉姆</a>
+                    <a data-href="test/23.html" data-changeIf="IF_23" class="more-tabs">梅西</a>
+                    <a data-href="test/24.html" data-changeIf="IF_24" class="more-tabs">C罗</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="g-section">
+        <div class="container-fluid">
+            <div class="jumbotron content-box" id="content-box">
+                <!--iframe-->
+            </div>
+        </div>
+    </section>
+    <footer class="page-footer stylish-color-dark">
+        <div class="container">
+            <div class="row text-center text-md-left mt-3 pb-3">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="title mb-4 font-bold">公司名称</h6>
+                    <p>浙江艋顺信息科技有限公司</p>
+                </div>
+                <hr class="w-100 clearfix d-md-none">
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="title mb-4 font-bold">产品介绍</h6>
+                    <p><a href="#!">艋顺后台管理系统</a></p>
+                    <p><a href="#!">人船联动管理系统</a></p>
+                    <p><a href="#!">小卖部管理系统</a></p>
+                </div>
+                <hr class="w-100 clearfix d-md-none">
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="title mb-4 font-bold">友情链接</h6>
+                    <p><a href="#!"></a></p>
+                </div>
+                <hr class="w-100 clearfix d-md-none">
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="title mb-4 font-bold">联系方式</h6>
+                    <p><i class="fa fa-home mr-3"></i> http://www.imengshun.com</p>
+                    <p><i class="fa fa-location-arrow mr-3"></i>杭州市西湖区文三路西118号杭州电子商务大厦10F</p>
+                    <p><i class="fa fa-phone mr-3"></i> 0571-58119789</p>
+                    <p><i class="fa fa-print mr-3"></i> 0571-58119789</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row py-3 d-flex align-items-center">
+                <div class="col-md-8 col-lg-9">
+                    <p class="text-center text-md-left grey-text">© 2017 Copyright: <a href="https://www.imengshun.com"><strong> imengshun.com</strong></a></p>
+                </div>
+                <div class="col-md-4 col-lg-3 ml-lg-0">
+                    <div class="social-section text-center text-md-left">
+                        <ul>
+                            <li><a class="btn-floating btn-sm rgba-white-slight mr-xl-4"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="btn-floating btn-sm rgba-white-slight mr-xl-4"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="btn-floating btn-sm rgba-white-slight mr-xl-4"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="btn-floating btn-sm rgba-white-slight mr-xl-4"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="go-back">
+        <a class="btn-floating btn-lg blue-gradient"><i class="fa fa-arrow-up"></i></a>
+    </div>
+</div>
+<!-- MDB -->
+<!--<script type="text/javascript" src="src/plugins/MDB/js/jquery-3.2.1.min.js"></script>-->
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="src/plugins/MDB/js/popper.min.js"></script>
+<script type="text/javascript" src="src/plugins/MDB/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="src/plugins/MDB/js/mdb.min.js"></script>
+<!--GDT-->
+<script src="src/plugins/GDT/jquery.mCustomScrollbar.concat.min.js"></script>
+<!--TOT-->
+<script src="src/plugins/TOT/js/jquery.toolbar.min.js"></script>
+<!--ALT-->
+<script src="src/plugins/ALT/toastr.js"></script>
+<script src="src/js/config.js"></script>
+<script src="src/js/layout.js"></script>
+<script src="src/js/index.js"></script>
+</body>
+</html>

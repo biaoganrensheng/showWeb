@@ -1,0 +1,19 @@
+{
+  "name": "WEB_PAGE",
+  "version": "1.0.0",
+  "description": "><font color=#999>目录导航</font>",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "mdbootstrap": "^4.4.4"
+  }
+}

@@ -1,0 +1,120 @@
+/*
+    html body css
+*/
+html,body{height:100%;}
+.mCSB_container{margin-right: 10px;}
+.mCSB_scrollTools .mCSB_draggerContainer{z-index: 1000}
+.mCS-dark>.mCSB_scrollTools .mCSB_buttonUp{position: relative;z-index: 1001;}
+body>.mCustomScrollBox>.mCSB_scrollTools{top:2%; height:96%;}
+.mCSB_horizontal>.mCSB_container{margin-bottom:10px;}
+/*
+    go-back css
+*/
+.go-back{
+    position:fixed;
+    right:30px;
+    bottom:30px;
+    z-index: 1000;
+    display: none;
+}
+/*
+    tool tip
+*/
+.toolbar-primary{
+    background-color:#fff;
+}
+.toolbar-primary.tool-right .arrow {
+    border-color: transparent #fff transparent transparent;
+}
+.tool-item{
+    width: 160px;
+    height: 60px;
+    line-height: 40px;
+    top: 13px;
+    left: -36px;
+     z-index: 1000;
+    color: #000;
+    font-size: 14px;
+}
+/*
+    header css
+*/
+.more-nav::after{
+    border:none;
+}
+.navbar-brand{
+    width:310px;
+    padding-left:30px;
+}
+.navbar-brand,.navbar-nav.mr-auto>li>a{
+    line-height: 48px;
+}
+.paddingRt-navbar{
+    padding-right: 30px;
+}
+.more-img{
+    width:24px;
+    margin-left: 20px;
+}
+.btn-container{
+    position: fixed;
+    top:88px;
+    left:0;
+    right:0;
+}
+.btn-container-items>.btn{
+    position: relative;
+    font-size:16px;
+    z-index:100;
+}
+.btn-container-items>.btn>i{
+    position: absolute;
+    top:6px;
+    right:4px;
+    z-index:101;
+}
+.btn-none{
+    display: none !important;
+}
+.scrolling-navbar{
+    -webkit-transition: height .5s  ease-in-out;
+    -moz-transition: height .5s  ease-in-out;
+    -ms-transition: height .5s  ease-in-out;
+    -o-transition: height .5s  ease-in-out;
+    transition: height .5s  ease-in-out;
+}
+.paddingRt-edit{
+    padding-right:50px;
+}
+.editIcon{
+    left:-40px;
+    width:120px;
+}
+.btn-container-overflow{
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+}
+.btn-container-items{
+    overflow: hidden;
+    height:64px;
+    white-space:nowrap;
+}
+.btn-container-items>.btn{
+    padding:.85rem 2rem;
+}
+.btn-container-items>.btn.action{
+    background-color: #282f3f !important;
+}
+/*
+    section css
+*/
+#content-box{
+    padding-top:152px;
+    padding-left: 0;
+    padding-right: 0;
+}
+#content-box>.tab-item{
+    display: none;
+}
+
