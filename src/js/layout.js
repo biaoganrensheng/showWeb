@@ -44,6 +44,15 @@
             $(".btn-container").css({"top":"74px"});
         }
     });*/
+ $(window).scroll(function(){
+     var _top=$(this).scrollTop();
+     console.log(_top)
+     if(_top==0){
+         $(".btn-container").css({"top":'88px'});
+     }else{
+         $(".btn-container").css({"top":"74px"});
+     }
+ })
     /*
        tool tip (#click_navbar>li .dropdown-menu a:not('#li_more a'))
    * */

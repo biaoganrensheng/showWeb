@@ -2,10 +2,32 @@
     html body css
 */
 html,body{height:100%;}
-.mCSB_container{margin-right: 10px;}
+::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track-piece
+{
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical
+{
+    height: 5px;
+    background-color: #999999;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal
+{
+    width: 5px;
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}
+/*.mCSB_container{margin-right: 10px;}
 .mCSB_scrollTools .mCSB_draggerContainer{z-index: 1000}
 .mCS-dark>.mCSB_scrollTools .mCSB_buttonUp{position: relative;z-index: 1001;}
-body>.mCustomScrollBox>.mCSB_scrollTools{top:2%; height:96%;}
+body>.mCustomScrollBox>.mCSB_scrollTools{top:2%; height:96%;}*/
 .mCSB_horizontal>.mCSB_container{margin-bottom:10px;}
 /*
     定制按钮
@@ -93,13 +115,6 @@ body>.mCustomScrollBox>.mCSB_scrollTools{top:2%; height:96%;}
 }
 .btn-none{
     display: none !important;
-}
-.scrolling-navbar{
-    -webkit-transition: height .5s  ease-in-out;
-    -moz-transition: height .5s  ease-in-out;
-    -ms-transition: height .5s  ease-in-out;
-    -o-transition: height .5s  ease-in-out;
-    transition: height .5s  ease-in-out;
 }
 .paddingRt-edit{
     padding-right:50px;
