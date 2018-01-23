@@ -26,11 +26,9 @@
                     if($(v).hasClass("more-tabs")){
                        $("#li_more").addClass("active");
                     }
+                    return false;
                 }
             })
-        }else{
-            $("#click_navbar .nav-item").removeClass("active");
-            $("#trigger_index").addClass("active");
         }
     };
     //初始化Iframe 的高度
@@ -49,8 +47,7 @@
         var _index=_btnArr.indexOf(_name);
         _btnArr.splice(_index,1);
         if(_btnArr.length==0){
-            $("#activeTab").val("");
-            hightOneTab();
+            $("#trigger_index a").trigger("click");
         }else{
             $(".btn-container-items ."+_btnArr[_btnArr.length-1]).trigger("click");
         }
@@ -90,6 +87,7 @@
             $(".btn-container-items .btn").css("backgroundColor","#45526E");
             $(".btn-container-items ."+_btnJudge).css("backgroundColor","#00d3ee");
         }
+        hightOneTab();
     };
     // 初始化标签页滚动条
     var initTabScroll=function(pos){
@@ -117,7 +115,7 @@
     };
     // 标签页联动
     var initGD=function (){
-        var _btnText=$(this).text().trim();
+        var _btnText=($(this).text().trim())!=""?$(this).text().trim():$(this).data("content");
         var _btnJudge=$(this).data("changeif");
         var _tabHref=$(this).data("href");
         var _pos="."+_btnJudge;
@@ -139,45 +137,90 @@
         showTab(_name);
         hightOneTab();
     };
-    // 高亮tab 页
-    var heightTab=function(){
-        $("#click_navbar .nav-item").removeClass("active");
-        $(this).addClass("active");
-    };
+
     // more 更多的选择页切换
     var moreTab=function(event,dom){
         var _moreBtnText=$(dom).text().trim();
         var _moreBtnJudge=$(dom).data("changeif");
         var _moreTabHref=$(dom).data("href");
+        var _pos="."+_moreBtnJudge;
         appendBtnIframe(_moreBtnText,_moreBtnJudge,_moreTabHref);
-        initTabScroll();
+        initTabScroll(_pos);
     };
-    // 关闭当前标签页
+    // 关闭标签页
     var closeCur=function(e){
         e.preventDefault();
         var tarBtn=$("#activeTab").val();
        if(tarBtn!="IF_0"){
-           $(".btn-container-items ."+tarBtn+" i").trigger("click");
-           MSConfig.Toastr("success","当前标签页已关闭!","2000");
+           var suc=function(){
+           var url="test/1.json";
+               MSConfig.Aja(url,{},"POST")
+                   .done(function(data){
+
+                       MSConfig.SwalAlert("success","删除!","标签页已删除!");
+                       $(".btn-container-items ."+tarBtn+" i").trigger("click");
+                   })
+                   .fail(function(error){
+                       MSConfig.SwalAlert("error","OMG", "删除操作失败了!");
+                    });
+           };
+            MSConfig.SwalConfirm("warning","友情提示","确定要删除当前标签页吗?",suc);
+       }else{
+           MSConfig.Toastr("info","没有可关闭的标签页","1500","toast-bottom-right");
        }
     };
     var closeOther=function(e){
         e.preventDefault();
         var tarBtn=$("#activeTab").val();
-        $(".btn-container-items .btn i").not(".btn-container-items ."+tarBtn+" i").trigger("click");
-        MSConfig.Toastr("success","其他标签页已关闭!","2000");
+        if(_btnArr.length==1&&_btnArr[0]=="IF_0"){
+            MSConfig.Toastr("info","没有可关闭的标签页","1500","toast-bottom-right");
+        }else{
+            var suc=function(){
+                var url="test/1.json";
+                MSConfig.Aja(url,{},"POST")
+                    .done(function(data){
+                        $(".btn-container-items .btn i").not(".btn-container-items ."+tarBtn+" i").trigger("click");
+                        setTimeout(function () {
+                            $(".btn-container-overflow").mCustomScrollbar("update");
+                        },300);
+                        MSConfig.SwalAlert("success","删除!","其他标签页已删除!");
+                    })
+                    .fail(function(error){
+                        MSConfig.SwalAlert("error","OMG", "删除操作失败了!");
+                    });
+            };
+            MSConfig.SwalConfirm("warning","友情提示","确定要删除其他标签页吗?",suc);
+        }
     };
     var closeAll=function(e){
-        $(".btn-container-items .btn i").trigger("click");
-        $("#trigger_index a").trigger("click");
-        MSConfig.Toastr("success","标签页已全部关闭!","2000");
+        if(_btnArr.length==1&&_btnArr[0]=="IF_0"){
+            MSConfig.Toastr("info","没有可关闭的标签页","1500","toast-bottom-right");
+        }else{
+            var suc=function(){
+                var url="test/1.json";
+                MSConfig.Aja(url,{},"POST")
+                    .done(function(data){
+                        MSConfig.SwalAlert("success","删除!","所有标签页已被删除!");
+                        $(".btn-container-items .btn i").trigger("click");
+
+                    })
+                    .fail(function(error){
+                        MSConfig.SwalAlert("error","OMG", "删除操作失败了!");
+                    });
+            };
+            MSConfig.SwalConfirm("warning","友情提示","确定要删除所有标签页吗?",suc);
+        }
     };
-    $("#navbarSupportedContent").on("click",".topic",initGD);
+    // 个性化定制
+    var showDefined=function(e){
+        $(this).modal('show');
+    };
+    $("body").on("click",".topic",initGD);
     $(".btn-container-items").on("click",".btn i",delBtn);
     $(".btn-container-items").on("click",".btn",changeTabIframe);
-    $("#click_navbar").on("click",".nav-item",heightTab);
     $("#li_more>div a").on('toolbarItemClick',moreTab);
     $("body").on("click","#close_cur",closeCur);
     $("body").on("click","#close_other",closeOther);
     $("body").on("click","#close_all",closeAll);
+    $("body").on("click","#defineThemeControl",showDefined)
 })(jQuery,document,window);

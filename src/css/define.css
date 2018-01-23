@@ -8,6 +8,21 @@ html,body{height:100%;}
 body>.mCustomScrollBox>.mCSB_scrollTools{top:2%; height:96%;}
 .mCSB_horizontal>.mCSB_container{margin-bottom:10px;}
 /*
+    定制按钮
+*/
+.defineBtn{
+    margin-bottom: 6px;
+}
+.defineTab{
+    margin-top:18px;
+}
+#defineTab-pill{
+    max-height: 240px;
+}
+#defineTab-pill .form-group{
+    min-width: 140px;
+}
+/*
     go-back css
 */
 .go-back{
@@ -73,6 +88,9 @@ body>.mCustomScrollBox>.mCSB_scrollTools{top:2%; height:96%;}
     right:4px;
     z-index:101;
 }
+.btn-container-items>.btn>i:hover,.btn-container-items>.btn>i:active{
+    color:#007888;
+}
 .btn-none{
     display: none !important;
 }
@@ -106,6 +124,9 @@ body>.mCustomScrollBox>.mCSB_scrollTools{top:2%; height:96%;}
 .btn-container-items>.btn.action{
     background-color: #282f3f !important;
 }
+.btn-container-items .btn-cyan.active, .btn-cyan:active, .btn-cyan:focus {
+    background-color: #00d3ee !important;
+}
 /*
     section css
 */
@@ -118,3 +139,17 @@ body>.mCustomScrollBox>.mCSB_scrollTools{top:2%; height:96%;}
     display: none;
 }
 
+/*
+    history page
+*/
+#gooey-v{
+    position:absolute !important;
+    left:80px;
+    top:80%;
+}
+.history-page [type=checkbox] + label:before{
+    border: 1.5px solid transparent;
+}
+.history-page .gooeySVG{
+    display: none;
+}

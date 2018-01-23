@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="src/plugins/GDT/jquery.mCustomScrollbar.css">
     <!--TOT-->
     <link rel="stylesheet" href="src/plugins/TOT/css/jquery.toolbar.css">
+    <!--LOADING-->
+    <link rel="stylesheet" href="src/plugins/LOADING/jquery.mloading.css">
+    <!--HISTORY PAGE-->
+    <link rel="stylesheet" href="src/plugins/HISTORYPAGE/css/gooey.min.css">
     <!-- MDB -->
     <link rel="stylesheet" href="src/plugins/MDB/css/layout.css">
     <link rel="stylesheet" href="src/css/define.css">
@@ -106,7 +110,8 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-purple"
                              aria-labelledby="navbarDropdownMenuLink-5">
                             <a class="dropdown-item waves-effect waves-light" href="javascript:;">编辑个人资料</a>
-                            <a class="dropdown-item waves-effect waves-light" href="javascript:;">个性化定制</a>
+                            <!--data-target="#defineTheme"-->
+                            <a class="dropdown-item waves-effect waves-light" href="javascript:;" data-toggle="modal"  data-target="#defineTheme">个性化定制</a>
                             <a class="dropdown-item waves-effect waves-light" href="javascript:;">退出登录</a>
                         </div>
                     </li>
@@ -205,7 +210,184 @@
         </div>
     </footer>
     <div class="go-back">
-        <a class="btn-floating btn-lg blue-gradient"><i class="fa fa-arrow-up"></i></a>
+        <a class="btn-floating blue-gradient"><i class="fa fa-arrow-up"></i></a>
+    </div>
+    <div class="history-page">
+        <div id="gooey-v">
+            <input type="checkbox" class="menu-open" name="menu-open4" id="menu-open4"/>
+            <label class="open-button" for="menu-open4">
+                <span class="burger burger-1"></span>
+                <span class="burger burger-2"></span>
+                <span class="burger burger-3"></span>
+            </label>
+            <a data-href="test/0.html" data-content="主页" data-changeIf="IF_0" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="主页"><i class="fa fa-bookmark fa-2x"></i> </a>
+            <a data-href="test/2.html" data-content="业务中心1" data-changeIf="IF_1" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="业务中心1"> <i class="fa fa-file-text fa-2x"></i> </a>
+            <a data-href="test/4.html" data-content="数据中心1" data-changeIf="IF_4" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="数据中心1"> <i class="fa fa-columns  fa-2x"></i> </a>
+            <a data-href="test/4.html" data-content="信息交流1" data-changeIf="IF_7" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="信息交流1"> <i class="fa fa-file fa-2x"></i> </a>
+            <a data-href="test/5.html" data-content="统计分析1" data-changeIf="IF_10" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="统计分析1"> <i class="fa fa-paper-plane fa-2x"></i> </a>
+            <a data-href="test/6.html" data-content="系统管理1" data-changeIf="IF_13" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="系统管理1"> <i class="fa fa-file-text-o  fa-2x"></i> </a>
+        </div>
+    </div>
+    <div class="modal fade" id="defineTheme" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-success modal-full-height modal-right" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="heading lead">我的个性化定制</p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                    </div>
+                    <h1 class="h3-responsive">定制主题</h1>
+                    <p class="lead">选择自己喜欢的颜色</p>
+                    <div class="row defineBtn">
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-unique btn-block">选择</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-cyan btn-block">选择</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-purple btn-block">选择</button>
+                        </div>
+                    </div>
+                    <div class="row defineBtn">
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-pink btn-block">选择</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-indigo btn-block">选择</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-dark-green btn-block">选择</button>
+                        </div>
+                    </div>
+                    <div class="row defineBtn">
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-yellow btn-block">选择</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-amber btn-block">选择</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-deep-orange btn-block">选择</button>
+                        </div>
+                    </div>
+                    <div class="row defineBtn">
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-brown btn-block">选择</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-btn-blue-grey btn-block">选择</button>
+                        </div>
+                    </div>
+                    <h1 class="h3-responsive defineTab">定制我的标签</h1>
+                    <p class="lead">选择自己喜欢的标签(最多6个)</p>
+                    <form class="form-inline" id="defineTab-pill">
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox11">
+                            <label for="checkbox11">
+                                <span class="badge badge-pill pink">业务中心1</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox12">
+                            <label for="checkbox12">
+                                <span class="badge badge-pill light-blue">业务中心2</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox13">
+                            <label for="checkbox13">
+                                <span class="badge badge-pill indigo">业务中心3</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox21">
+                            <label for="checkbox21">
+                                <span class="badge badge-pill purple">信息交流1</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox22">
+                            <label for="checkbox22">
+                                <span class="badge badge-pill orange">信息交流否2</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox23">
+                            <label for="checkbox23">
+                                <span class="badge badge-pill green">信息交流撒打发3</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox31">
+                            <label for="checkbox31">
+                                <span class="badge badge-pill purple">数据中心1</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox32">
+                            <label for="checkbox32">
+                                <span class="badge badge-pill orange">数据中心2</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox33">
+                            <label for="checkbox33">
+                                <span class="badge badge-pill indigo">数据中心3</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox41">
+                            <label for="checkbox41">
+                                <span class="badge badge-pill green">统计中心1</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox42">
+                            <label for="checkbox42">
+                                <span class="badge badge-pill light-blue">统计中心2</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox43">
+                            <label for="checkbox43">
+                                <span class="badge badge-pill green">统计中心3</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox51">
+                            <label for="checkbox51">
+                                <span class="badge badge-pill indigo">系统管理1</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox52">
+                            <label for="checkbox52">
+                                <span class="badge badge-pill purple">系统管理2</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox53">
+                            <label for="checkbox53">
+                                <span class="badge badge-pill green">系统管理3</span>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn btn-primary-modal">保 存<i class="fa fa-diamond ml-1"></i></a>
+                    <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">取 消</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- MDB -->
@@ -218,10 +400,20 @@
 <script src="src/plugins/GDT/jquery.mCustomScrollbar.concat.min.js"></script>
 <!--TOT-->
 <script src="src/plugins/TOT/js/jquery.toolbar.min.js"></script>
+<!--LOADING-->
+<script src="src/plugins/LOADING/jquery.mloading.js"></script>
+<!--HISTORY PAGE-->
+<script src="src/plugins/HISTORYPAGE/js/gooey.min.js"></script>
+<!--ONDRAG-->
+<script src="src/plugins/ONDRAG/jquery.event.ue.js"></script>
+<script src="src/plugins/ONDRAG/jquery.udraggable.js"></script>
 <!--ALT-->
 <script src="src/plugins/ALT/toastr.js"></script>
-<script src="src/js/config.js"></script>
+<script src="src/plugins/ALT/sweetalert.min.js"></script>
+<!--selected-->
+<script type="text/javascript" src="src/plugins/SELECT/selected.js"></script>
 <script src="src/js/layout.js"></script>
+<script src="src/js/config.js"></script>
 <script src="src/js/index.js"></script>
 </body>
 </html>
