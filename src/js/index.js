@@ -93,7 +93,7 @@
     var initTabScroll=function(pos){
         var _totalW=0;
         $(".btn-container-items .btn").each(function (i,v) {
-            _totalW+=($(v).outerWidth()+4);
+            _totalW+=($(v).outerWidth()+6);
         });
         if(_initGd){
             $(".btn-container-overflow").mCustomScrollbar("update");
@@ -267,7 +267,6 @@
             if(isChose){
                 var navbarBg=$(v).data("bg");
                 var xiala=$(v).data("xiala");
-                console.log(xiala);
                 stroeDefinedObj.bg=navbarBg;
                 stroeDefinedObj.xiala=xiala;
                 if(navbarBg!="default"){

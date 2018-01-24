@@ -100,11 +100,20 @@
     };
     var initScroll=function(e){
         setTimeout(function(){
+            var flag=store.get("MS_definedTab");
+            $("#defined-sel").mCustomScrollbar("destroy");
             $("#defined-sel").mCustomScrollbar({
                 autoHideScrollbar:false,
                 theme:"dark"
             });
-        },500);
+            if(!flag){
+                $("#defineTab-pill input[type='checkbox']").each(function(i,v){
+                    if($(v).data("chose")==true){
+                        $(v).prop("checked",true);
+                    }
+                })
+            }
+        },500)
     };
     initDefinedTab();
     pageScroll();
