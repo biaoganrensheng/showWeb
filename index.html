@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="src/plugins/LOADING/jquery.mloading.css">
     <!--HISTORY PAGE-->
     <link rel="stylesheet" href="src/plugins/HISTORYPAGE/css/gooey.min.css">
+    <!--TOOLTIP-->
+    <link rel="stylesheet" href="src/plugins/TOOLTIP/css/tipso.min.css">
     <!-- MDB -->
     <link rel="stylesheet" href="src/plugins/MDB/css/layout.css">
     <link rel="stylesheet" href="src/css/define.css">
@@ -22,7 +24,7 @@
 <body>
 <div class="g-index">
     <header class="g-header">
-        <nav class="mb-1 navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" id="changeNavbar">
             <a class="navbar-brand" href="#">
                 <img src="src/images/logo.png" alt="后台管理系统">
                 后台管理系统
@@ -34,16 +36,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto" id="click_navbar">
                     <li class="nav-item active" id="trigger_index">
-                        <a class="nav-link waves-effect waves-light topic" data-href="test/0.html" data-changeIf="IF_0">主页</a>
+                        <a class="nav-link waves-effect waves-light topic" data-href="test/html/0.html" data-changeIf="IF_0">主页</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown">
                             业务中心
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-unique">
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/1.html" data-changeIf="IF_1">业务中心1</a>
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/2.html" data-changeIf="IF_2">业务中心2</a>
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/3.html" data-changeIf="IF_3">业务中心3</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/1.html" data-changeIf="IF_1">业务中心1</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/2.html" data-changeIf="IF_2">业务中心2</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/3.html" data-changeIf="IF_3">业务中心3</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -51,9 +53,9 @@
                             数据中心
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-unique">
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/4.html" data-changeIf="IF_4">数据中心1</a>
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/5.html" data-changeIf="IF_5">数据中心2</a>
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/6.html" data-changeIf="IF_6">数据中心3</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/4.html" data-changeIf="IF_4">数据中心1</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/5.html" data-changeIf="IF_5">数据中心2</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/6.html" data-changeIf="IF_6">数据中心3</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -61,9 +63,9 @@
                             信息交流
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-unique">
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/7.html" data-changeIf="IF_7">信息交流1</a>
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/8.html" data-changeIf="IF_8">信息交流2</a>
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/9.html" data-changeIf="IF_9">信息交流3</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/7.html" data-changeIf="IF_7">信息交流1</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/8.html" data-changeIf="IF_8">信息交流2</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/9.html" data-changeIf="IF_9">信息交流3</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -71,9 +73,9 @@
                             统计分析
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-unique">
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/10.html" data-changeIf="IF_10">统计分析1</a>
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/11.html" data-changeIf="IF_11">统计分析2</a>
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/12.html" data-changeIf="IF_12">统计分析3</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/10.html" data-changeIf="IF_10">统计分析1</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/11.html" data-changeIf="IF_11">统计分析2</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/12.html" data-changeIf="IF_12">统计分析3</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -81,9 +83,9 @@
                             系统管理
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-unique">
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/13.html" data-changeIf="IF_13">系统管理1</a>
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/14.html" data-changeIf="IF_14">系统管理2</a>
-                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/15.html" data-changeIf="IF_15">系统管理3</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/13.html" data-changeIf="IF_13">系统管理1</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/14.html" data-changeIf="IF_14">系统管理2</a>
+                            <a class="dropdown-item waves-effect waves-light topic" data-href="test/html/15.html" data-changeIf="IF_15">系统管理3</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown" id="li_more">
@@ -111,7 +113,7 @@
                              aria-labelledby="navbarDropdownMenuLink-5">
                             <a class="dropdown-item waves-effect waves-light" href="javascript:;">编辑个人资料</a>
                             <!--data-target="#defineTheme"-->
-                            <a class="dropdown-item waves-effect waves-light" href="javascript:;" data-toggle="modal"  data-target="#defineTheme">个性化定制</a>
+                            <a class="dropdown-item waves-effect waves-light" id="definedT" href="javascript:;" data-toggle="modal"  data-target="#defineTheme">个性化定制</a>
                             <a class="dropdown-item waves-effect waves-light" href="javascript:;">退出登录</a>
                         </div>
                     </li>
@@ -139,19 +141,19 @@
             </div>
             <div id="tooltip-defined">
                 <div id="toolbar-options-QQ" class="hidden">
-                    <a data-href="test/16.html" data-changeIf="IF_16" class="more-tabs">QQ音乐</a>
-                    <a data-href="test/17.html" data-changeIf="IF_17" class="more-tabs">QQ游戏</a>
-                    <a data-href="test/18.html" data-changeIf="IF_18" class="more-tabs">QQ邮箱</a>
+                    <a data-href="test/html/16.html" data-changeIf="IF_16" class="more-tabs">QQ音乐</a>
+                    <a data-href="test/html/17.html" data-changeIf="IF_17" class="more-tabs">QQ游戏</a>
+                    <a data-href="test/html/18.html" data-changeIf="IF_18" class="more-tabs">QQ邮箱</a>
                 </div>
                 <div id="toolbar-options-WX" class="hidden">
-                    <a data-href="test/19.html" data-changeIf="IF_19" class="more-tabs">微信挑一挑</a>
-                    <a data-href="test/20.html" data-changeIf="IF_20" class="more-tabs">微信小程序</a>
-                    <a data-href="test/21.html" data-changeIf="IF_21" class="more-tabs">微信公众号</a>
+                    <a data-href="test/html/19.html" data-changeIf="IF_19" class="more-tabs">微信挑一挑</a>
+                    <a data-href="test/html/20.html" data-changeIf="IF_20" class="more-tabs">微信小程序</a>
+                    <a data-href="test/html/21.html" data-changeIf="IF_21" class="more-tabs">微信公众号</a>
                 </div>
                 <div id="toolbar-options-ZQ" class="hidden">
-                    <a data-href="test/22.html" data-changeIf="IF_22" class="more-tabs">贝克汉姆</a>
-                    <a data-href="test/23.html" data-changeIf="IF_23" class="more-tabs">梅西</a>
-                    <a data-href="test/24.html" data-changeIf="IF_24" class="more-tabs">C罗</a>
+                    <a data-href="test/html/22.html" data-changeIf="IF_22" class="more-tabs">贝克汉姆</a>
+                    <a data-href="test/html/23.html" data-changeIf="IF_23" class="more-tabs">梅西</a>
+                    <a data-href="test/html/24.html" data-changeIf="IF_24" class="more-tabs">C罗</a>
                 </div>
             </div>
         </nav>
@@ -220,12 +222,14 @@
                 <span class="burger burger-2"></span>
                 <span class="burger burger-3"></span>
             </label>
-            <a data-href="test/0.html" data-content="主页" data-changeIf="IF_0" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="主页"><i class="fa fa-bookmark fa-2x"></i> </a>
-            <a data-href="test/2.html" data-content="业务中心1" data-changeIf="IF_1" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="业务中心1"> <i class="fa fa-file-text fa-2x"></i> </a>
-            <a data-href="test/4.html" data-content="数据中心1" data-changeIf="IF_4" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="数据中心1"> <i class="fa fa-columns  fa-2x"></i> </a>
-            <a data-href="test/4.html" data-content="信息交流1" data-changeIf="IF_7" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="信息交流1"> <i class="fa fa-file fa-2x"></i> </a>
-            <a data-href="test/5.html" data-content="统计分析1" data-changeIf="IF_10" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="统计分析1"> <i class="fa fa-paper-plane fa-2x"></i> </a>
-            <a data-href="test/6.html" data-content="系统管理1" data-changeIf="IF_13" class="gooey-menu-item topic" data-toggle="tooltip" data-placement="right" title="系统管理1"> <i class="fa fa-file-text-o  fa-2x"></i> </a>
+            <span id="page-container">
+           <!--  <a data-href="test/html/0.html" data-content="主页" data-changeIf="IF_0" class="gooey-menu-item topic" data-tipso="主页"><i class="fa fa-bookmark fa-2x"></i> </a>
+            <a data-href="test/html/2.html" data-content="业务中心1" data-changeIf="IF_1" class="gooey-menu-item topic" data-tipso="业务中心1"> <i class="fa fa-file-text fa-2x"></i> </a>
+            <a data-href="test/html/4.html" data-content="数据中心1" data-changeIf="IF_4" class="gooey-menu-item topic" data-tipso="数据中心1"> <i class="fa fa-columns  fa-2x"></i> </a>
+            <a data-href="test/html/4.html" data-content="信息交流1" data-changeIf="IF_7" class="gooey-menu-item topic" data-tipso="信息交流1"> <i class="fa fa-file fa-2x"></i> </a>
+            <a data-href="test/html/5.html" data-content="统计分析1" data-changeIf="IF_10" class="gooey-menu-item topic" data-tipso="统计分析1"> <i class="fa fa-paper-plane fa-2x"></i> </a>
+            <a data-href="test/html/6.html" data-content="系统管理1" data-changeIf="IF_13" class="gooey-menu-item topic" data-tipso="系统管理1"> <i class="fa fa-file-text-o  fa-2x"></i> </a>-->
+            </span>
         </div>
     </div>
     <div class="modal fade" id="defineTheme" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -239,7 +243,7 @@
                     </button>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body" id="defined-sel">
                     <div class="text-center">
                         <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
                     </div>
@@ -247,144 +251,111 @@
                     <p class="lead">选择自己喜欢的颜色</p>
                     <div class="row defineBtn">
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-unique btn-block">选择</button>
+                            <button type="button" class="btn btn-unique btn-block" data-bg="bg-unique" data-xiala="dropdown-danger">选择</button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-cyan btn-block">选择</button>
+                            <button type="button" class="btn btn-cyan btn-block" data-bg="cyan" data-xiala="dropdown-default">选择</button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-purple btn-block">选择</button>
-                        </div>
-                    </div>
-                    <div class="row defineBtn">
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-pink btn-block">选择</button>
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-indigo btn-block">选择</button>
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-dark-green btn-block">选择</button>
+                            <button type="button" class="btn btn-purple btn-block" data-bg="purple" data-xiala="dropdown-secondary">选择</button>
                         </div>
                     </div>
                     <div class="row defineBtn">
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-yellow btn-block">选择</button>
+                            <button type="button" class="btn btn-pink btn-block" data-bg="pink" data-xiala="dropdown-danger">选择</button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-amber btn-block">选择</button>
+                            <button type="button" class="btn btn-indigo btn-block" data-bg="indigo" data-xiala="dropdown-primary">选择</button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-deep-orange btn-block">选择</button>
+                            <button type="button" class="btn btn-dark-green btn-block" data-bg="green" data-xiala="dropdown-success">选择</button>
                         </div>
                     </div>
                     <div class="row defineBtn">
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-brown btn-block">选择</button>
+                            <button type="button" class="btn btn-yellow btn-block" data-bg="yellow" data-xiala="dropdown-warning">选择</button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-btn-blue-grey btn-block">选择</button>
+                            <button type="button" class="btn btn-amber btn-block" data-bg="amber" data-xiala="dropdown-warning">选择</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-deep-orange btn-block" data-bg="deep-orange" data-xiala="dropdown-warning">选择</button>
+                        </div>
+                    </div>
+                    <div class="row defineBtn">
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-brown btn-block" data-bg="brown" data-xiala="dropdown-elegant">选择</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-blue-grey btn-block" data-bg="blue-grey" data-xiala="dropdown-ins">选择</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-mdb btn-block activeB" data-bg="default" data-xiala="dropdown-primary">默认</button>
                         </div>
                     </div>
                     <h1 class="h3-responsive defineTab">定制我的标签</h1>
                     <p class="lead">选择自己喜欢的标签(最多6个)</p>
                     <form class="form-inline" id="defineTab-pill">
                         <div class="form-group">
-                            <input type="checkbox" id="checkbox11">
+                            <input type="checkbox" id="checkbox11" value="业务中心1" data-itemurl="test/html/1.html" data-itemiframe="IF_1" checked>
                             <label for="checkbox11">
                                 <span class="badge badge-pill pink">业务中心1</span>
                             </label>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" id="checkbox12">
+                            <input type="checkbox" id="checkbox12" value="业务中心2" data-itemurl="test/html/2.html" data-itemiframe="IF_2" checked>
                             <label for="checkbox12">
                                 <span class="badge badge-pill light-blue">业务中心2</span>
                             </label>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" id="checkbox13">
+                            <input type="checkbox" id="checkbox13" value="业务中心3" data-itemurl="test/html/3.html" data-itemiframe="IF_3" checked>
                             <label for="checkbox13">
                                 <span class="badge badge-pill indigo">业务中心3</span>
                             </label>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" id="checkbox21">
+                            <input type="checkbox" id="checkbox21" value="数据中心1" data-itemurl="test/html/4.html" data-itemiframe="IF_4" checked>
                             <label for="checkbox21">
-                                <span class="badge badge-pill purple">信息交流1</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="checkbox22">
-                            <label for="checkbox22">
-                                <span class="badge badge-pill orange">信息交流否2</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="checkbox23">
-                            <label for="checkbox23">
-                                <span class="badge badge-pill green">信息交流撒打发3</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="checkbox31">
-                            <label for="checkbox31">
                                 <span class="badge badge-pill purple">数据中心1</span>
                             </label>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" id="checkbox32">
-                            <label for="checkbox32">
+                            <input type="checkbox" id="checkbox22" value="数据中心2" data-itemurl="test/html/5.html" data-itemiframe="IF_5" checked>
+                            <label for="checkbox22">
                                 <span class="badge badge-pill orange">数据中心2</span>
                             </label>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" id="checkbox33">
+                            <input type="checkbox" id="checkbox23" value="数据中心3" data-itemurl="test/html/6.html" data-itemiframe="IF_6">
+                            <label for="checkbox23">
+                                <span class="badge badge-pill green">数据中心3</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox31" value="信息交流1" data-itemurl="test/html/7.html" data-itemiframe="IF_7">
+                            <label for="checkbox31">
+                                <span class="badge badge-pill purple">信息交流1</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox32" value="信息交流2" data-itemurl="test/html/8.html" data-itemiframe="IF_8">
+                            <label for="checkbox32">
+                                <span class="badge badge-pill orange">信息交流2</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkbox33" value="信息交流3" data-itemurl="test/html/9.html" data-itemiframe="IF_9">
                             <label for="checkbox33">
-                                <span class="badge badge-pill indigo">数据中心3</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="checkbox41">
-                            <label for="checkbox41">
-                                <span class="badge badge-pill green">统计中心1</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="checkbox42">
-                            <label for="checkbox42">
-                                <span class="badge badge-pill light-blue">统计中心2</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="checkbox43">
-                            <label for="checkbox43">
-                                <span class="badge badge-pill green">统计中心3</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="checkbox51">
-                            <label for="checkbox51">
-                                <span class="badge badge-pill indigo">系统管理1</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="checkbox52">
-                            <label for="checkbox52">
-                                <span class="badge badge-pill purple">系统管理2</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="checkbox53">
-                            <label for="checkbox53">
-                                <span class="badge badge-pill green">系统管理3</span>
+                                <span class="badge badge-pill indigo">信息交流3</span>
                             </label>
                         </div>
                     </form>
                 </div>
 
-                <div class="modal-footer justify-content-center">
-                    <a type="button" class="btn btn-primary-modal">保 存<i class="fa fa-diamond ml-1"></i></a>
-                    <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">取 消</a>
+               <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn btn-primary-modal" id="definedSave">保 存<i class="fa fa-diamond ml-1"></i></a>
+                    <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal" id="definedCancle">取 消</a>
                 </div>
             </div>
         </div>
@@ -410,10 +381,17 @@
 <!--ALT-->
 <script src="src/plugins/ALT/toastr.js"></script>
 <script src="src/plugins/ALT/sweetalert.min.js"></script>
-<!--selected-->
+<!--SELECTED-->
 <script type="text/javascript" src="src/plugins/SELECT/selected.js"></script>
+<!--SAVE-->
+<script src="src/plugins/SAVE/cdnstore.js"></script>
+<!--TOOLTIP-->
+<script src="src/plugins/TOOLTIP/js/tipso.min.js"></script>
 <script src="src/js/layout.js"></script>
 <script src="src/js/config.js"></script>
 <script src="src/js/index.js"></script>
+<script>
+
+</script>
 </body>
 </html>

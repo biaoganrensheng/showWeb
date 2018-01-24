@@ -1,59 +1,5 @@
 ;(function($){
     /*
-   * 初始化全局的滚动插件
-   * **/
- /*  $(window).load(function(){
-        $("body").mCustomScrollbar({
-            theme:"dark",
-            scrollInertia:200,
-            scrollEasing:"easeOutCirc",
-            mouseWheel:true,
-            autoDraggerLength:true,
-            scrollButtons:{
-                enable:true
-            },
-           advanced:{
-                updateOnBrowserResize:true,
-                updateOnContentResize:true,
-                autoExpandHorizontalScroll:false,
-                autoScrollOnFocus:true
-            },
-            callbacks:{
-                onScrollStart:function(){},
-                onScroll:function(ros){onScroll(ros)},
-                onTotalScroll:function(){},
-                onTotalScrollBack:function(){scrollTop()},
-                onTotalScrollOffset:40,
-                onTotalScrollBackOffset:20
-            }
-        });
-        $(".go-back").on("click",function(){
-            $("body").mCustomScrollbar("scrollTo","top");
-        });
-        function scrollTop(){
-            $(".scrolling-navbar").css({"paddingTop":".5rem","paddingBottom":".5rem"});
-            $(".btn-container").css({"top":'80px'});
-        }
-        function onScroll(ros){
-            if(ros.topPct>=40){
-                $(".go-back").show();
-            }else{
-                $(".go-back").hide();
-            }
-            $(".scrolling-navbar").css({"paddingTop":"5px","paddingBottom":"5px"});
-            $(".btn-container").css({"top":"74px"});
-        }
-    });*/
- $(window).scroll(function(){
-     var _top=$(this).scrollTop();
-     console.log(_top)
-     if(_top==0){
-         $(".btn-container").css({"top":'88px'});
-     }else{
-         $(".btn-container").css({"top":"74px"});
-     }
- })
-    /*
        tool tip (#click_navbar>li .dropdown-menu a:not('#li_more a'))
    * */
     $("#li_more .dropdown-menu a").each(function(i,v){
@@ -66,43 +12,108 @@
             event: 'hover'
         })
     });
-    /*
-    *  draggable
-    * */
-    $('#gooey-v').udraggable();
-    /*
-    ** gooeymenu
+    var initGooey=function(){
+        /*
+   *  draggable
+   * */
+        $('#gooey-v').udraggable();
+        /*
+        ** gooeymenu
+         */
+        $("#gooey-v").gooeymenu({
+            bgColor: "#343a40",
+            contentColor: "white",
+            style: "circle",
+            circle: {
+                radius: 65
+            },
+            margin: "small",
+            size: 60,
+            bounce: true,
+            bounceLength: "small",
+            transitionStep: 100,
+            hover: "#dc3545",
+            active:'#dc3545',
+            open: function() {
+                $(this).find(".gooey-menu-item").css("background-color", "#ffc107");
+                $(this).find(".open-button").css("background-color", "#ffc107");
+            },
+            close: function() {
+                $(this).find(".gooey-menu-item").css("background-color", "#343a40");
+                $(this).find(".open-button").css("background-color", "#343a40");
+            }
+        });
+        /*
+*  tooltip
+* */
+        $(".gooey-menu-item").tipso({
+            useTitle: false,
+            background:'#000000'
+        });
+    };
+    /** 初始化定制的导航和标签
      */
-    $("#gooey-v").gooeymenu({
-        bgColor: "#343a40",
-        contentColor: "white",
-        style: "circle",
-        circle: {
-            radius: 65
-        },
-        margin: "small",
-        size: 60,
-        bounce: true,
-        bounceLength: "small",
-        transitionStep: 100,
-        hover: "#dc3545",
-        active:'#dc3545',
-        open: function() {
-            $(this).find(".gooey-menu-item").css("background-color", "#007bff");
-            $(this).find(".open-button").css("background-color", "#007bff");
-        },
-        close: function() {
-            $(this).find(".gooey-menu-item").css("background-color", "#343a40");
-            $(this).find(".open-button").css("background-color", "#343a40");
+    var initDefinedTab=function(){
+        var his=store.get("MS_definedTab");
+        if(his){
+            var bg=his.bg;
+            var checkedItem=his.changeif;
+            var xiala=his.xiala;
+            var lovePage="";
+            var iconArr=['fa-bookmark','fa-tags','fa-columns','fa-paw','fa-paper-plane','fa-meh-o'];
+            $(".defineBtn .btn[data-bg="+bg+"]").addClass("activeB");
+            checkedItem.forEach(function(v,i){
+                var tarChecked=v.iframe;
+                $("#defineTab-pill input[data-itemiframe='"+tarChecked+"']").prop("checked",true);
+                lovePage+='<a data-href="'+v.url+'" data-content="'+v.text+'" data-changeIf="'+v.iframe+'" class="gooey-menu-item topic" data-tipso="'+v.text+'"><i class="fa fa-2x '+iconArr[i]+'"></i></a>';
+            });
+            $("#changeNavbar").attr("class","mb-1 navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar "+bg);
+            $("#click_navbar>li>.dropdown-menu").attr("class","dropdown-menu dropdown-menu-right "+xiala);
+            $("#page-container").html(lovePage);
+            initGooey();
         }
-    });
+
+    };
+    var pageScroll=function(){
+        $(window).scroll(function(){
+            var _top=$(this).scrollTop();
+            if(_top==0){
+                $(".btn-container").css({"top":'88px'});
+            }else{
+                if(_top>=840){
+                    $(".go-back").show();
+                }else{
+                    $(".go-back").hide();
+                }
+                $(".btn-container").css({"top":"74px"});
+            }
+        });
+        $(".go-back").on("click",function(){
+            $("html,body").animate({scrollTop:"0px"},500);
+        });
+    };
     /*
-    *  tooltip
-    * */
-    $('[data-toggle="tooltip"]').tooltip();
+    * 设置定制框高度*/
+    var definedH= function(){
+        var h=$(window).height()-160;
+        $("#defined-sel").css("maxHeight",h);
+    };
+    var initScroll=function(e){
+        setTimeout(function(){
+            $("#defined-sel").mCustomScrollbar({
+                autoHideScrollbar:false,
+                theme:"dark"
+            });
+        },500);
+    };
+    initDefinedTab();
+    pageScroll();
+    definedH();
+    initGooey();
     /*
     * select
     * */
     $('.mdb-select').material_select();
+    $("body").on("click","#definedT",initScroll);
 })(jQuery);
 

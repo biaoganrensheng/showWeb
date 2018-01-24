@@ -176,7 +176,7 @@
             MSConfig.Toastr("info","没有可关闭的标签页","1500","toast-bottom-right");
         }else{
             var suc=function(){
-                var url="test/1.json";
+                var url="test/json/1.json";
                 MSConfig.Aja(url,{},"POST")
                     .done(function(data){
                         $(".btn-container-items .btn i").not(".btn-container-items ."+tarBtn+" i").trigger("click");
@@ -211,10 +211,101 @@
             MSConfig.SwalConfirm("warning","友情提示","确定要删除所有标签页吗?",suc);
         }
     };
-    // 个性化定制
-    var showDefined=function(e){
-        $(this).modal('show');
+    // 点击定制按钮
+    var activeBtn=function(e){
+        $(".defineBtn .btn").removeClass("activeB");
+        $(this).addClass("activeB");
     };
+    var initGooey=function(){
+        /*
+   *  draggable
+   * */
+        $('#gooey-v').udraggable();
+        /*
+        ** gooeymenu
+         */
+        $("#gooey-v").gooeymenu({
+            bgColor: "#343a40",
+            contentColor: "white",
+            style: "circle",
+            circle: {
+                radius: 65
+            },
+            margin: "small",
+            size: 60,
+            bounce: true,
+            bounceLength: "small",
+            transitionStep: 100,
+            hover: "#dc3545",
+            active:'#dc3545',
+            open: function() {
+                $(this).find(".gooey-menu-item").css("background-color", "#ffc107");
+                $(this).find(".open-button").css("background-color", "#ffc107");
+            },
+            close: function() {
+                $(this).find(".gooey-menu-item").css("background-color", "#343a40");
+                $(this).find(".open-button").css("background-color", "#343a40");
+            }
+        });
+        /*
+*  tooltip
+* */
+        $(".gooey-menu-item").tipso({
+            useTitle: false,
+            background:'#000000'
+        });
+    };
+    // 点击保存按钮的事件
+    var definedSave=function(e){
+        e.preventDefault();
+        var stroeDefinedObj={};
+        var storePage=[];
+        var toolTipstr="";
+        var Flagcoming=true;
+        $(".defineBtn .btn").each(function(i,v){
+            var isChose=$(v).hasClass("activeB");
+            if(isChose){
+                var navbarBg=$(v).data("bg");
+                var xiala=$(v).data("xiala");
+                console.log(xiala);
+                stroeDefinedObj.bg=navbarBg;
+                stroeDefinedObj.xiala=xiala;
+                if(navbarBg!="default"){
+                    $("#changeNavbar").attr("class","mb-1 navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar "+navbarBg);
+                    $("#click_navbar>li>.dropdown-menu").attr("class","dropdown-menu dropdown-menu-right "+xiala);
+                }else{
+                    $("#changeNavbar").attr("class","mb-1 navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar");
+                    $("#click_navbar>li>.dropdown-menu").attr("class","dropdown-menu dropdown-menu-right dropdown-unique");
+                }
+                return false;
+            }
+        });
+        $("#defineTab-pill input[type='checkbox']").each(function(i,v){
+            if($(v).is(':checked')){
+                var pageItem={};
+                var iconArr=['fa-bookmark','fa-tags','fa-columns','fa-paw','fa-paper-plane','fa-meh-o'];
+                pageItem.url=$(v).data("itemurl");
+                pageItem.iframe=$(v).data("itemiframe");
+                pageItem.text=$(v).val();
+                if((storePage.indexOf(pageItem)==-1)&&(storePage.length<6)){
+                    storePage.push(pageItem);
+                    toolTipstr+='<a data-href="'+$(v).data("itemurl")+'" data-content="'+$(v).val()+'" data-changeIf="'+pageItem.iframe+'" class="gooey-menu-item topic" data-tipso="'+$(v).val()+'"><i class="fa fa-2x '+iconArr[storePage.length-1]+'"></i></a>';
+                }else{
+                    MSConfig.SwalAlert("error","友情提示","标签页最多可定制6个");
+                    Flagcoming=false;
+                }
+            }
+        });
+        if(Flagcoming){
+            $("#page-container").html(toolTipstr);
+            initGooey();
+            stroeDefinedObj.changeif=storePage;
+            store.set("MS_definedTab",stroeDefinedObj);
+            $("#definedCancle").trigger("click");
+            MSConfig.Toastr("success","恭喜你,定制成功","2500","toast-top-right");
+        }
+    };
+    // 个性化定制
     $("body").on("click",".topic",initGD);
     $(".btn-container-items").on("click",".btn i",delBtn);
     $(".btn-container-items").on("click",".btn",changeTabIframe);
@@ -222,5 +313,6 @@
     $("body").on("click","#close_cur",closeCur);
     $("body").on("click","#close_other",closeOther);
     $("body").on("click","#close_all",closeAll);
-    $("body").on("click","#defineThemeControl",showDefined)
+    $(".defineBtn").on("click",".btn",activeBtn);
+    $("#defineTheme").on("click","#definedSave",definedSave)
 })(jQuery,document,window);

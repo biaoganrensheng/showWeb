@@ -24,26 +24,7 @@ html,body{height:100%;}
     background-color: #CCCCCC;
     -webkit-border-radius: 6px;
 }
-/*.mCSB_container{margin-right: 10px;}
-.mCSB_scrollTools .mCSB_draggerContainer{z-index: 1000}
-.mCS-dark>.mCSB_scrollTools .mCSB_buttonUp{position: relative;z-index: 1001;}
-body>.mCustomScrollBox>.mCSB_scrollTools{top:2%; height:96%;}*/
 .mCSB_horizontal>.mCSB_container{margin-bottom:10px;}
-/*
-    定制按钮
-*/
-.defineBtn{
-    margin-bottom: 6px;
-}
-.defineTab{
-    margin-top:18px;
-}
-#defineTab-pill{
-    max-height: 240px;
-}
-#defineTab-pill .form-group{
-    min-width: 140px;
-}
 /*
     go-back css
 */
@@ -167,4 +148,33 @@ body>.mCustomScrollBox>.mCSB_scrollTools{top:2%; height:96%;}*/
 }
 .history-page .gooeySVG{
     display: none;
+}
+/*
+    defined tab
+*/
+#defined-sel{
+    overflow-y:auto;
+    overflow-x: hidden;
+    padding-bottom:30px;
+    padding-right: .5rem !important;
+}
+/*
+    定制按钮
+*/
+.defineBtn{
+    margin-bottom: 6px;
+}
+.defineTab{
+    margin-top:18px;
+}
+#defineTab-pill{
+    padding-bottom:30px;
+}
+#defineTab-pill .form-group{
+    min-width: 130px;
+}
+.defineBtn .btn.activeB{
+    font-weight: bold;
+    letter-spacing: 4px;
+    color:#666 !important;
 }
