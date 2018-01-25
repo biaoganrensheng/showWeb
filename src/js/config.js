@@ -24,11 +24,12 @@ var MSConfig=(function($,doc,win){
             };
             toastr[state](content);
         };
-        Config.SwalConfirm=function(icon,title,text,fn1,fn2){
+        Config.SwalConfirm=function(icon,title,text,fn1){
            swal({
                title: title||"友情提示",
                text: text||"",
                icon: icon||"info",
+               button: true,
                dangerMode: true
            }).then(
                function(willDelete){
@@ -38,8 +39,12 @@ var MSConfig=(function($,doc,win){
                }
            )
         };
-        Config.SwalAlert=function(state,title,content){
-            swal(title, content, state);
+        Config.SwalAlert=function(state,title,content,time){
+            swal(title,content, {
+                icon:state||"success",
+                buttons: false,
+                timer: 2000||time
+            });
         };
         Config.Loading=function(show,dom,text,icon,content){
             dom=dom||"body";
@@ -77,6 +82,13 @@ var MSConfig=(function($,doc,win){
         });
         return AJAX;
     };
+        Config.JumpPage=function (url,flag) {
+            if(typeof url !="string"){
+                Config.SwalAlert("error","提示","类型错误,必须是字符串类型");
+                return;
+            }
+            flag=="blank"?window.open(url):(window.location.href=url);
+        };
         return Config;
 })(jQuery,document,window);
 

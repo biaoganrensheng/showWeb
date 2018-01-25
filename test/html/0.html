@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="import" href= "6.html" id="tests">
+    <script src="../../src/plugins/MDB/js/jquery-3.2.1.min.js"></script>
+    <script src="../../src/plugins/ART/art.js"></script>
     <style>
         *{
             margin: 0;
@@ -19,12 +22,39 @@
 </head>
 <body>
 <h1 style="height:1800px;">这是11sdfsa</h1>
+<div id="content"></div>
 <button type="button">click me</button>
-<script src="../../src/plugins/MDB/js/jquery-3.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<!--<script id="test" type="text/html">
+    <h1>{{title}}</h1>
+    <ul>
+        {{each list as value i}}
+        <li>索引 {{i + 1}} ：{{value}}</li>
+        {{/each}}
+    </ul>
+</script>
 <script>
-$("button").click(function () {
-    alert(1)
-})
+    var data = {
+        title: '标签',
+        list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+    };
+    var html = template('test', data);
+    document.getElementById('content').innerHTML = html;
+</script>-->
+<script>
+   /* var render = template.compile(source);
+    var html = render({
+        list: ['摄影', '电影', '民谣', '旅行', '吉他']
+    });
+    document.getElementById('content').innerHTML = html;*/
+   var module = document.querySelector('#tests').import.querySelector('script');
+   document.querySelector('body').prepend(module);
+   var data ={
+       title: '标签',
+       list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+   };
+   var html = template('demo', data);
+   document.getElementById('content').innerHTML = html;
 </script>
 </body>
 </html>

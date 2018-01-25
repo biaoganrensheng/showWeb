@@ -178,3 +178,22 @@ html,body{height:100%;}
     letter-spacing: 4px;
     color:#666 !important;
 }
+
+
+/******************************************************************loginout***********************************************/
+/*
+    要修改的
+*/
+.img-container{
+    width:100%;
+    height:680px;
+    background: url(../images/banner.jpg) no-repeat;
+    background-size:100% 100%;
+}
+.login-showImg{
+    width:100%;
+    height:680px;
+}
+.loginBtn{
+    width:240px;
+}

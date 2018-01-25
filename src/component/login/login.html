@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理后台</title>
+    <link rel="shortcut icon" href="Ms.ico" type="images/x-icon"/>
+    <link rel="icon" href="../../../Ms.ico" type="images/x-icon"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- GDT-->
+    <link rel="stylesheet" href="../../plugins/GDT/jquery.mCustomScrollbar.css">
+    <!--TOT-->
+    <!--LOADING-->
+    <link rel="stylesheet" href="../../plugins/LOADING/jquery.mloading.css">
+    <!--TOOLTIP-->
+    <link rel="stylesheet" href="../../plugins/TOOLTIP/css/tipso.min.css">
+    <!-- MDB -->
+    <link rel="stylesheet" href="../../plugins/MDB/css/layout.css">
+    <link rel="stylesheet" href="../../css/define.css">
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div class="card card-cascade wider reverse my-4 pb-5">
+        <div class="view overlay hm-white-slight wow fadeIn" style="animation-name: none; visibility: visible;">
+            <div class="img-container">
+
+            </div>
+            <!--<img src="../../images/banner.jpg" class="img-fluid login-showImg">-->
+            <a href="#!">
+                <div class="mask waves-effect waves-light"></div>
+            </a>
+        </div>
+        <div class="card-body text-center wow fadeIn" data-wow-delay="0.2s" style="animation-name: none; visibility: visible;">
+            <h4 class="card-title"><strong>艋顺管理后台</strong></h4>
+            <h5 class="blue-text"><strong>MS</strong></h5>
+            <p class="card-text">艋顺后台,让管理变得简单使我们的不变宗旨! </p>
+            <a class="btn btn-primary btn-lg waves-effect waves-light loginBtn" data-toggle="modal" data-target="#modalLogin">登 录</a>
+        </div>
+    </div>
+</div>
+<!--Modal: Login Form-->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal" role="document">
+        <div class="modal-content">
+            <div class="modal-header light-blue darken-3 white-text">
+                <h4 class="title"><i class="fa fa-user"></i> 登录后台</h4>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <form action="" id="loginForm" method="post">
+                    <div class="md-form form-sm">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" required id="login-user" class="form-control">
+                        <label for="login-user">用户名</label>
+                    </div>
+
+                    <div class="md-form form-sm">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="password" id="login-pwd" class="form-control">
+                        <label for="login-pwd">密码</label>
+                    </div>
+
+                    <div class="text-center mt-2">
+                        <button type="button" class="btn btn-info" id="login-btn">登录<i class="fa fa-sign-in ml-1"></i></button>
+                    </div>
+                </form>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <div class="options text-center text-md-right mt-1">
+                    <p>忘记 <a href="javascript:;">密码?</a></p>
+                </div>
+                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MDB -->
+<!--<script type="text/javascript" src="src/plugins/MDB/js/jquery-3.2.1.min.js"></script>-->
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="../../plugins/MDB/js/popper.min.js"></script>
+<script type="text/javascript" src="../../plugins/MDB/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../plugins/MDB/js/mdb.min.js"></script>
+<!--GDT-->
+<script src="../../plugins/GDT/jquery.mCustomScrollbar.concat.min.js"></script>
+<!--LOADING-->
+<script src="../../plugins/LOADING/jquery.mloading.js"></script>
+<!--ALT-->
+<script src="../../plugins/ALT/toastr.js"></script>
+<script src="../../plugins/ALT/sweetalert.min.js"></script>
+<!--FORM-->
+<script src="../../plugins/FORM/jquery.form.min.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/login.js"></script>
+</body>
+</html>

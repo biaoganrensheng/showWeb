@@ -3,7 +3,10 @@
     var _initGd=false;
     var _btnArr=[];
     $(function(){
+        MSConfig.Toastr("success","欢迎来到艋顺后台!","3000");
         $("#trigger_index a").trigger("click");
+        $(".btn-container").hide();
+        $("#content-box").css("paddingTop","88px");
     });
     //iframe 展示
     var showTab=function(name){
@@ -63,12 +66,14 @@
         var _allBtn="";
         var _itemIframe="";
         $("#activeTab").val(_btnJudge);
+        $("#content-box").css("paddingTop","152px");
         if(_btnArr.indexOf(_btnJudge)==-1){
             if(_btnJudge=="IF_0"){
                 _allBtn+='<button type="button"  class="btn btn-cyan btn-none '+_btnJudge+'">'
                     +_btnText+
                     '<i class="fa fa-times ml-2"></i></button>';
             }else{
+                $(".btn-container").show();
                 _allBtn+='<button type="button"  class="btn btn-cyan '+_btnJudge+'">'
                     +_btnText+
                     '<i class="fa fa-times ml-2"></i></button>';
@@ -83,6 +88,10 @@
             heightIframe(domH);
             _btnArr.push(_btnJudge);
         }else{
+            if(_btnArr.length==1){
+                $(".btn-container").hide();
+                $("#content-box").css("paddingTop","88px");
+            }
             showTab(_btnJudge);
             $(".btn-container-items .btn").css("backgroundColor","#45526E");
             $(".btn-container-items ."+_btnJudge).css("backgroundColor","#00d3ee");
@@ -153,7 +162,7 @@
         var tarBtn=$("#activeTab").val();
        if(tarBtn!="IF_0"){
            var suc=function(){
-           var url="test/1.json";
+           var url="test/json/1.json";
                MSConfig.Aja(url,{},"POST")
                    .done(function(data){
 
@@ -197,7 +206,7 @@
             MSConfig.Toastr("info","没有可关闭的标签页","1500","toast-bottom-right");
         }else{
             var suc=function(){
-                var url="test/1.json";
+                var url="test/json/1.json";
                 MSConfig.Aja(url,{},"POST")
                     .done(function(data){
                         MSConfig.SwalAlert("success","删除!","所有标签页已被删除!");
@@ -296,6 +305,10 @@
             }
         });
         if(Flagcoming){
+            if(storePage.length==0){
+                toolTipstr+='<a data-href="test/html/0.html" data-content="主页" data-changeIf="IF_0" class="gooey-menu-item topic" data-tipso="主页"><i class="fa fa-bookmark fa-2x"></i> </a>';
+                storePage=[{"url":"test/html/0.html","iframe":"IF_0","text":"主页"}];
+            }
             $("#page-container").html(toolTipstr);
             initGooey();
             stroeDefinedObj.changeif=storePage;
@@ -304,7 +317,36 @@
             MSConfig.Toastr("success","恭喜你,定制成功","2500","toast-top-right");
         }
     };
-    // 个性化定制
+    // 个性化定制(初始化滚动条)
+    var initScroll=function(e){
+        var h=$(window).height()-160;
+        $("#defined-sel").css("maxHeight",h);
+        setTimeout(function(){
+            var flag=store.get("MS_definedTab");
+            $("#defined-sel").mCustomScrollbar("destroy");
+            $("#defined-sel").mCustomScrollbar({
+                autoHideScrollbar:false,
+                theme:"dark"
+            });
+            if(!flag){
+                $("#defineTab-pill input[type='checkbox']").each(function(i,v){
+                    if($(v).data("chose")==true){
+                        $(v).prop("checked",true);
+                    }
+                })
+            }
+        },500)
+    };
+    // 退出登录
+    var signOut=function(e){
+        var out=function(index){
+            MSConfig.SwalAlert("success","退出","您已成功退出!",1000);
+            setTimeout(function(){
+                MSConfig.JumpPage("src/component/login/login.html");
+            },1200)
+        };
+        MSConfig.SwalConfirm("warning","退出","您确定要退吗?",out);
+    };
     $("body").on("click",".topic",initGD);
     $(".btn-container-items").on("click",".btn i",delBtn);
     $(".btn-container-items").on("click",".btn",changeTabIframe);
@@ -313,5 +355,7 @@
     $("body").on("click","#close_other",closeOther);
     $("body").on("click","#close_all",closeAll);
     $(".defineBtn").on("click",".btn",activeBtn);
-    $("#defineTheme").on("click","#definedSave",definedSave)
+    $("#defineTheme").on("click","#definedSave",definedSave);
+    $("body").on("click","#definedDz",initScroll);
+    $(".g-header").on("click","#definedOut",signOut);
 })(jQuery,document,window);
