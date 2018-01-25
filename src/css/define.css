@@ -142,6 +142,7 @@ html,body{height:100%;}
     position:absolute !important;
     left:80px;
     top:80%;
+    z-index:10000;
 }
 .history-page [type=checkbox] + label:before{
     border: 1.5px solid transparent;

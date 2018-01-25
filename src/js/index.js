@@ -49,10 +49,10 @@
         var _name=_text[_text.length-1];
         var _index=_btnArr.indexOf(_name);
         _btnArr.splice(_index,1);
-        if(_btnArr.length==0){
-            $("#trigger_index a").trigger("click");
-        }else{
-            $(".btn-container-items ."+_btnArr[_btnArr.length-1]).trigger("click");
+        $(".btn-container-items ."+_btnArr[_btnArr.length-1]).trigger("click");
+        if(_btnArr.length==1){
+            $(".btn-container").hide();
+            $("#content-box").css("paddingTop","88px");
         }
         $(this).parents(".btn").remove();
         hideTab(_name);
@@ -66,7 +66,6 @@
         var _allBtn="";
         var _itemIframe="";
         $("#activeTab").val(_btnJudge);
-        $("#content-box").css("paddingTop","152px");
         if(_btnArr.indexOf(_btnJudge)==-1){
             if(_btnJudge=="IF_0"){
                 _allBtn+='<button type="button"  class="btn btn-cyan btn-none '+_btnJudge+'">'
@@ -74,6 +73,7 @@
                     '<i class="fa fa-times ml-2"></i></button>';
             }else{
                 $(".btn-container").show();
+                $("#content-box").css("paddingTop","152px");
                 _allBtn+='<button type="button"  class="btn btn-cyan '+_btnJudge+'">'
                     +_btnText+
                     '<i class="fa fa-times ml-2"></i></button>';
@@ -146,7 +146,6 @@
         showTab(_name);
         hightOneTab();
     };
-
     // more 更多的选择页切换
     var moreTab=function(event,dom){
         var _moreBtnText=$(dom).text().trim();
