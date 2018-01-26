@@ -62,6 +62,7 @@
             var xiala=his.xiala;
             var lovePage="";
             var iconArr=['fa-bookmark','fa-tags','fa-columns','fa-paw','fa-paper-plane','fa-meh-o'];
+            $(".defineBtn .btn").removeClass("activeB");
             $(".defineBtn .btn[data-bg="+bg+"]").addClass("activeB");
             checkedItem.forEach(function(v,i){
                 var tarChecked=v.iframe;
@@ -98,11 +99,12 @@
         if($(this).hasClass("sizeFlag")){
             $("#changeContainer").addClass("container-fluid");
             $(".g-header").removeClass("hidden");
-            $("#content-box").css("paddingTop","88px");
             $(this).find(".fa").attr("class","fa fa-expand");
             if($(".btn-container-items .btn").size()>1){
+                $("#content-box").css("paddingTop","152px");
                 $("#change-size").css({"left":15,"top":"152px"});
             }else{
+                $("#content-box").css("paddingTop","88px");
                 $("#change-size").css({"left":15,"top":"88px"});
             }
             $(this).removeClass("sizeFlag");

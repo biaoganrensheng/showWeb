@@ -1,6 +1,7 @@
 ;(function($,doc,win){
     var _sumWidth=$(".btn-container-overflow").outerWidth();
     var _initGd=false;
+    var _clickOther=false;
     var _btnArr=[];
     $(function(){
         MSConfig.Toastr("success","欢迎来到艋顺后台!","3000");
@@ -48,25 +49,31 @@
         var _text=_targetIf.split(" ");
         var _name=_text[_text.length-1];
         var _index=_btnArr.indexOf(_name);
-        console.log(_btnArr)
         _btnArr.splice(_index,1);
-        $(".btn-container-items ."+_btnArr[_btnArr.length-1]).trigger("click");
-        if(_btnArr.length==1&&(_btnArr[0]="IF_0")){
-            console.log(22)
-           // $(".btn-container").hide();
-            $("#content-box").css("paddingTop","88px");
-            $("#change-size").css({"left":15,"top":"88px"});
-        }
-       /* if(_btnArr.length==0){
-            $("#trigger_index a").trigger("click");
-        }*/
+       if(_btnArr.length==0){
+           $("#trigger_index a").trigger("click");
+       }else{
+           $(".btn-container-items ."+_btnArr[_btnArr.length-1]).trigger("click");
+       }
+       if(!_clickOther){
+           if(_btnArr.length==1){
+               $(".btn-container").hide();
+               $("#content-box").css("paddingTop","88px");
+               $("#change-size").css({"left":15,"top":"88px"});
+           }
+       }else{
+           if(_btnArr[0]=="IF_0"){
+               $(".btn-container").hide();
+               $("#content-box").css("paddingTop","88px");
+               $("#change-size").css({"left":15,"top":"88px"});
+               _clickOther=false;
+           }
+       }
         $(this).parents(".btn").remove();
         hideTab(_name);
         $("#activeTab").val(_btnArr[_btnArr.length-1]);
-        console.log($("#activeTab").val())
         $(".btn-container-items .btn").css("backgroundColor","#45526E");
         $(".btn-container-items ."+_btnArr[_btnArr.length-1]).css("backgroundColor","#00d3ee");
-        console.log(_btnArr)
     };
     // 拼接按钮和iframe
     var appendBtnIframe=function(_btnText,_btnJudge,_tabHref){
@@ -191,6 +198,7 @@
     var closeOther=function(e){
         e.preventDefault();
         var tarBtn=$("#activeTab").val();
+        _clickOther=true;
         if(_btnArr.length==1&&_btnArr[0]=="IF_0"){
             MSConfig.Toastr("info","没有可关闭的标签页","1500","toast-bottom-right");
         }else{
@@ -241,7 +249,8 @@
         /*
    *  draggable
    * */
-        $('#gooey-v').udraggable();
+        var _pos=$(window).width()-100;
+        $('#gooey-v').udraggable({containment: [ 40, 40, _pos,_pos]});
         /*
         ** gooeymenu
          */
