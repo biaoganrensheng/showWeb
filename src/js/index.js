@@ -72,6 +72,7 @@
         $(this).parents(".btn").remove();
         hideTab(_name);
         $("#activeTab").val(_btnArr[_btnArr.length-1]);
+        $(".btn-container-overflow").mCustomScrollbar("update");
         $(".btn-container-items .btn").css("backgroundColor","#45526E");
         $(".btn-container-items ."+_btnArr[_btnArr.length-1]).css("backgroundColor","#00d3ee");
     };
@@ -103,10 +104,6 @@
             heightIframe(domH);
             _btnArr.push(_btnJudge);
         }else{
-            if(_btnArr.length==1){
-                $(".btn-container").hide();
-                $("#content-box").css("paddingTop","88px");
-            }
             showTab(_btnJudge);
             $(".btn-container-items .btn").css("backgroundColor","#45526E");
             $(".btn-container-items ."+_btnJudge).css("backgroundColor","#00d3ee");

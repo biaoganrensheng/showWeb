@@ -68,6 +68,10 @@
                     <div class="text-center mt-2">
                         <button type="button" class="btn btn-info" id="login-btn">登录<i class="fa fa-sign-in ml-1"></i></button>
                     </div>
+                    <div class="md-form">
+                        <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
+                        <label for="date-picker-example">Try me...</label>
+                    </div>
                 </form>
             </div>
             <!--Footer-->
@@ -95,7 +99,11 @@
 <script src="../../plugins/ALT/sweetalert.min.js"></script>
 <!--FORM-->
 <script src="../../plugins/FORM/jquery.form.min.js"></script>
+<script src="../../plugins/TIME/picker.date.js"></script>
 <script src="../../js/config.js"></script>
 <script src="../../js/login.js"></script>
+<script>
+    $('.datepicker').pickadate();
+</script>
 </body>
 </html>
