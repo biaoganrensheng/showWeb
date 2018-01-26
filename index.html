@@ -22,6 +22,13 @@
     <link rel="stylesheet" href="src/css/define.css">
 </head>
 <body>
+<!--[if lte IE 10]>
+<div class="card red lighten-1 text-center z-depth-2" id="old-info">
+    <div class="card-body">
+        <p class="white-text mb-0">您的浏览器版本比较老, 请到 <a class="refreshWeb" href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验(推荐使用主流浏览器).</p>
+    </div>
+</div>
+<![endif]-->
 <div class="g-index">
     <header class="g-header">
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" id="changeNavbar">
@@ -159,10 +166,13 @@
         </nav>
     </header>
     <section class="g-section">
-        <div class="container-fluid">
+        <div class="container-fluid" id="changeContainer">
             <div class="jumbotron content-box" id="content-box">
                 <!--iframe-->
             </div>
+        </div>
+        <div class="change-size" id="change-size">
+            <button type="button" class="btn btn-deep-purple"><i class="fa fa-expand"></i></button>
         </div>
     </section>
     <footer class="page-footer stylish-color-dark">
@@ -251,46 +261,46 @@
                     <p class="lead">选择自己喜欢的颜色</p>
                     <div class="row defineBtn">
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-unique btn-block" data-bg="bg-unique" data-xiala="dropdown-danger">选择</button>
+                            <button type="button" class="btn btn-unique btn-block" data-bg="bg-unique" data-xiala="dropdown-danger">选择<i class="fa fa-tags"></i></button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-cyan btn-block" data-bg="cyan" data-xiala="dropdown-default">选择</button>
+                            <button type="button" class="btn btn-cyan btn-block" data-bg="cyan" data-xiala="dropdown-default">选择<i class="fa fa-tags"></i></button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-purple btn-block" data-bg="purple" data-xiala="dropdown-secondary">选择</button>
-                        </div>
-                    </div>
-                    <div class="row defineBtn">
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-pink btn-block" data-bg="pink" data-xiala="dropdown-danger">选择</button>
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-indigo btn-block" data-bg="indigo" data-xiala="dropdown-primary">选择</button>
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-dark-green btn-block" data-bg="green" data-xiala="dropdown-success">选择</button>
+                            <button type="button" class="btn btn-purple btn-block" data-bg="purple" data-xiala="dropdown-secondary">选择<i class="fa fa-tags"></i></button>
                         </div>
                     </div>
                     <div class="row defineBtn">
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-yellow btn-block" data-bg="yellow" data-xiala="dropdown-warning">选择</button>
+                            <button type="button" class="btn btn-pink btn-block" data-bg="pink" data-xiala="dropdown-danger">选择<i class="fa fa-tags"></i></button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-amber btn-block" data-bg="amber" data-xiala="dropdown-warning">选择</button>
+                            <button type="button" class="btn btn-indigo btn-block" data-bg="indigo" data-xiala="dropdown-primary">选择<i class="fa fa-tags"></i></button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-deep-orange btn-block" data-bg="deep-orange" data-xiala="dropdown-warning">选择 <i class="fa fa-diamond"></i></button>
+                            <button type="button" class="btn btn-dark-green btn-block" data-bg="green" data-xiala="dropdown-success">选择<i class="fa fa-tags"></i></button>
                         </div>
                     </div>
                     <div class="row defineBtn">
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-brown btn-block" data-bg="brown" data-xiala="dropdown-elegant">选择</button>
+                            <button type="button" class="btn btn-yellow btn-block" data-bg="yellow" data-xiala="dropdown-warning">选择<i class="fa fa-tags"></i></button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-blue-grey btn-block" data-bg="blue-grey" data-xiala="dropdown-ins">选择</button>
+                            <button type="button" class="btn btn-amber btn-block" data-bg="amber" data-xiala="dropdown-warning">选择<i class="fa fa-tags"></i></button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-mdb btn-block activeB" data-bg="default" data-xiala="dropdown-primary">默认</button>
+                            <button type="button" class="btn btn-deep-orange btn-block" data-bg="deep-orange" data-xiala="dropdown-warning">选择 <i class="fa fa-tags"></i></button>
+                        </div>
+                    </div>
+                    <div class="row defineBtn">
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-brown btn-block" data-bg="brown" data-xiala="dropdown-elegant">选择<i class="fa fa-tags"></i></button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-blue-grey btn-block" data-bg="blue-grey" data-xiala="dropdown-ins">选择<i class="fa fa-tags"></i></button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-mdb btn-block activeB" data-bg="default" data-xiala="dropdown-primary">默认<i class="fa fa-tags"></i></button>
                         </div>
                     </div>
                     <h1 class="h3-responsive defineTab">定制我的标签</h1>

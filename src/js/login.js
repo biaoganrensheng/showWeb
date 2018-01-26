@@ -5,13 +5,13 @@
             var user=$("#login-user").val().trim();
             var pwd=$("#login-pwd").val().trim();
             if(user==""){
-                $("#login-user").addClass("invalid");
+                //$("#login-user").addClass("invalid");
             }
             if(pwd==""){
-                $("#login-pwd").addClass("invalid");
+               // $("#login-pwd").addClass("invalid");
             }
         $("#login-user,#login-pwd").on("focus",function(){
-            $(this).removeClass("invalid");
+           // $(this).removeClass("invalid");
             });
             // 发送ajax提交
             if(user&&pwd){

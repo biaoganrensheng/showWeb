@@ -26,6 +26,21 @@ html,body{height:100%;}
 }
 .mCSB_horizontal>.mCSB_container{margin-bottom:10px;}
 /*
+    浏览器版本问题
+*/
+#old-info{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 160;
+    line-height: 110px;
+}
+.refreshWeb{
+   color:#00f;
+}
+/*
     go-back css
 */
 .go-back{
@@ -126,6 +141,47 @@ html,body{height:100%;}
 /*
     section css
 */
+.g-section{
+    position: relative;
+}
+/*
+    放大收缩按钮
+*/
+.change-size{
+    position: absolute;
+    top:88px;
+    left:15px;
+}
+.change-size .btn{
+    margin: 0;
+    padding:0;
+    width:50px;
+    height:50px;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    -ms-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+}
+.change-size i.fa{
+    font-size: 30px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.change-size:hover .btn{
+    width:80px;
+    height:80px;
+}
+.change-size:hover i.fa{
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+}
 #content-box{
     padding-top:152px;
     padding-left: 0;
@@ -177,9 +233,14 @@ html,body{height:100%;}
 .defineBtn .btn.activeB{
     font-weight: bold;
     letter-spacing: 4px;
-    color:#666 !important;
+    color:#ccc !important;
 }
-
+.defineBtn .btn i.fa{
+    display: none;
+}
+.defineBtn .btn.activeB i.fa{
+    display:block;
+}
 
 /******************************************************************loginout***********************************************/
 /*
@@ -188,7 +249,7 @@ html,body{height:100%;}
 .img-container{
     width:100%;
     height:680px;
-    background: url(../images/banner.jpg) no-repeat;
+    background: url(../images/banner2.jpg) no-repeat;
     background-size:100% 100%;
 }
 .login-showImg{
@@ -196,5 +257,5 @@ html,body{height:100%;}
     height:680px;
 }
 .loginBtn{
-    width:240px;
+    /*width:240px;*/
 }

@@ -48,18 +48,25 @@
         var _text=_targetIf.split(" ");
         var _name=_text[_text.length-1];
         var _index=_btnArr.indexOf(_name);
+        console.log(_btnArr)
         _btnArr.splice(_index,1);
         $(".btn-container-items ."+_btnArr[_btnArr.length-1]).trigger("click");
-        if(_btnArr.length==1){
-            $(".btn-container").hide();
+        if(_btnArr.length==1&&(_btnArr[0]="IF_0")){
+            console.log(22)
+           // $(".btn-container").hide();
             $("#content-box").css("paddingTop","88px");
+            $("#change-size").css({"left":15,"top":"88px"});
         }
+       /* if(_btnArr.length==0){
+            $("#trigger_index a").trigger("click");
+        }*/
         $(this).parents(".btn").remove();
         hideTab(_name);
         $("#activeTab").val(_btnArr[_btnArr.length-1]);
-        $(".btn-container-overflow").mCustomScrollbar("update");
+        console.log($("#activeTab").val())
         $(".btn-container-items .btn").css("backgroundColor","#45526E");
         $(".btn-container-items ."+_btnArr[_btnArr.length-1]).css("backgroundColor","#00d3ee");
+        console.log(_btnArr)
     };
     // 拼接按钮和iframe
     var appendBtnIframe=function(_btnText,_btnJudge,_tabHref){
@@ -74,6 +81,7 @@
             }else{
                 $(".btn-container").show();
                 $("#content-box").css("paddingTop","152px");
+                $("#change-size").css({"left":15,"top":"152px"});
                 _allBtn+='<button type="button"  class="btn btn-cyan '+_btnJudge+'">'
                     +_btnText+
                     '<i class="fa fa-times ml-2"></i></button>';
@@ -167,6 +175,9 @@
 
                        MSConfig.SwalAlert("success","删除!","标签页已删除!");
                        $(".btn-container-items ."+tarBtn+" i").trigger("click");
+                       setTimeout(function () {
+                           $(".btn-container-overflow").mCustomScrollbar("update");
+                       },300);
                    })
                    .fail(function(error){
                        MSConfig.SwalAlert("error","OMG", "删除操作失败了!");
@@ -210,7 +221,9 @@
                     .done(function(data){
                         MSConfig.SwalAlert("success","删除!","所有标签页已被删除!");
                         $(".btn-container-items .btn i").trigger("click");
-
+                        setTimeout(function () {
+                            $(".btn-container-overflow").mCustomScrollbar("update");
+                        },300);
                     })
                     .fail(function(error){
                         MSConfig.SwalAlert("error","OMG", "删除操作失败了!");
