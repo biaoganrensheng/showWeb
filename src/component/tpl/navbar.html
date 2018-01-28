@@ -1,0 +1,31 @@
+<ul class="navbar-nav mr-auto" id="click_navbar">
+    {{each $data as val key}}
+    {{if(val.title=="主页")}}
+    <li class="nav-item active" id="trigger_index">
+        <a class="nav-link waves-effect waves-light topic" data-href="{{val.items[0].url}}" data-changeIf="{{val.items[0].iframeName}}">{{val.title}}</a>
+    </li>
+    {{else if(val.title=="更多")}}
+    <li class="nav-item dropdown" id="li_more">
+        <a class="nav-link dropdown-toggle waves-effect waves-light more-nav" data-toggle="dropdown">
+            <img src="src/images/more.png" alt="more" class="more-img">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-unique">
+            {{each val.items as item index}}
+            <a class="dropdown-item waves-effect waves-light" href="javascript:;" id="{{item.id}}">{{item.text}}</a>
+            {{/each}}
+        </div>
+    </li>
+    {{else}}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown">
+            {{val.title}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-unique">
+            {{each val.items as item2 index2}}
+            <a class="dropdown-item waves-effect waves-light topic" data-href="{{item2.url}}" data-changeIf="{{item2.iframeName}}">{{item2.text}}</a>
+            {{/each}}
+        </div>
+    </li>
+    {{/if}}
+    {{/each}}
+</ul>

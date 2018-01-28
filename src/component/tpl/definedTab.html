@@ -1,0 +1,24 @@
+{{each $data as item key}}
+{{if(key>0)}}
+{{each item.items as item2 key2}}
+{{if(item2.items)}}
+{{each item2.items as item3 key3}}
+<div class="form-group">
+    <input type="checkbox" id="checkbox_more{{key2+'_'+key3}}" value="{{item3.text}}" data-chose="{{item3.ischecked}}" data-itemurl="{{item3.url}}" data-itemiframe="{{item3.iframeName}}">
+    <label for="checkbox_more{{key2+'_'+key3}}">
+        <span class="badge badge-pill {{item3.color}}">{{item3.text}}</span>
+    </label>
+</div>
+{{/each}}
+{{else}}
+<div class="form-group">
+    <input type="checkbox" id="checkbox_{{key+'_'+key2}}" value="{{item2.text}}" data-chose="{{item2.ischecked}}" data-itemurl="{{item2.url}}" data-itemiframe="{{item2.iframeName}}">
+    <label for="checkbox_{{key+'_'+key2}}">
+        <span class="badge badge-pill {{item2.color}}">{{item2.text}}</span>
+    </label>
+</div>
+{{/if}}
+{{/each}}
+{{/if}}
+{{/each}}
+

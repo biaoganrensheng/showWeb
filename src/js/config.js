@@ -1,9 +1,6 @@
 var MSConfig=(function($,doc,win){
-        /**
-         * 初始化ALERT
-         * **/
         var Config={};
-            Config.Toastr=function (state,content,time,pos){
+        Config.Toastr=function (state,content,time,pos){
             toastr.clear();
             toastr.options = {
                 "closeButton": true, // true/false
@@ -61,10 +58,7 @@ var MSConfig=(function($,doc,win){
                 $(dom).mLoading("hide");
             }
         };
-        Config.DefinedTab=function(){
-
-        };
-        Config.Aja=function(reqUrl,reqData,reqType,resType,contentType,reqTime){
+        Config.Ajax=function(reqUrl,reqData,reqType,resType,contentType,reqTime){
         var AJAX=$.ajax({
             url:reqUrl,
             type:reqType||"GET",
@@ -88,6 +82,16 @@ var MSConfig=(function($,doc,win){
                 return;
             }
             flag=="blank"?window.open(url):(window.location.href=url);
+        };
+        Config.Tpl=function(htmlUrl,domid,sendData){
+            if(htmlUrl == '') return;
+            $.get(htmlUrl, function(data) {
+                console.log(data);
+                var render = template.compile(data);
+                var html = render(sendData);
+                console.log(html);
+                document.getElementById(domid).innerHTML = html;
+            });
         };
         return Config;
 })(jQuery,document,window);

@@ -1,0 +1,11 @@
+{{each $data as val key}}
+{{if(val.title=="更多")}}
+{{each val.items as item index}}
+<div id="toolbar-options-{{item.id}}" class="hidden">
+    {{each item.items as item2 index2}}
+    <a data-href="{{item2.url}}" data-changeIf="{{item2.iframeName}}" class="more-tabs">{{item2.text}}</a>
+    {{/each}}
+</div>
+{{/each}}
+{{/if}}
+{{/each}}

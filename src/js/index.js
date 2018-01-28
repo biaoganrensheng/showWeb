@@ -4,10 +4,52 @@
     var _clickOther=false;
     var _btnArr=[];
     $(function(){
-        MSConfig.Toastr("success","欢迎来到艋顺后台!","3000");
-        $("#trigger_index a").trigger("click");
-        $(".btn-container").hide();
-        $("#content-box").css("paddingTop","88px");
+
+        MSConfig.Ajax("test/json/navbar.json")
+            .done(function(data){
+                if(data.res==200){
+                   MSConfig.Tpl("src/component/tpl/navbar.html","navbarContainer",data.list);
+                    MSConfig.Tpl("src/component/tpl/moreTab.html","tooltip-defined",data.list);
+                    (!store.get("MS_definedTab"))&&(MSConfig.Tpl("src/component/tpl/controlBar.html","page-container",data.list));
+                    MSConfig.Tpl("src/component/tpl/definedTab.html","defineTab-pill",data.list);
+                    setTimeout(function () {
+                        MSConfig.Toastr("success","欢迎来到艋顺后台!","1000");
+                        $("#trigger_index a").trigger("click");
+                        $(".btn-container").hide();
+                        $("#content-box").css("paddingTop","88px");
+                        $("#li_more .dropdown-menu a").each(function(i,v){
+                            var id=$(v).attr("id").trim();
+                            $('#'+id).toolbar({
+                                content: '#toolbar-options-'+id,
+                                position: 'right',
+                                style: 'primary',
+                                animation: 'flip',
+                                event: 'hover'
+                            })
+                        });
+                        var his=store.get("MS_definedTab");
+                        if(his){
+                            var bg=his.bg;
+                            var checkedItem=his.changeif;
+                            var xiala=his.xiala;
+                            var lovePage="";
+                            var iconArr=['fa-bookmark','fa-tags','fa-columns','fa-paw','fa-paper-plane','fa-meh-o'];
+                            $(".defineBtn .btn").removeClass("activeB");
+                            $(".defineBtn .btn[data-bg="+bg+"]").addClass("activeB");
+                            checkedItem.forEach(function(v,i){
+                                var tarChecked=v.iframe;
+                                $("#defineTab-pill input[data-itemiframe='"+tarChecked+"']").prop("checked",true);
+                                lovePage+='<a data-href="'+v.url+'" data-content="'+v.text+'" data-changeIf="'+v.iframe+'" class="gooey-menu-item topic" data-tipso="'+v.text+'"><i class="fa fa-2x '+iconArr[i]+'"></i></a>';
+                            });
+                            $("#changeNavbar").attr("class","mb-1 navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar "+bg);
+                            $("#click_navbar>li>.dropdown-menu").attr("class","dropdown-menu dropdown-menu-right "+xiala);
+                            $("#page-container").html(lovePage);
+                        }
+                         initGooey();
+                    },100)
+                }
+            })
+            .fail(function(error){MSConfig.SwalAlert("error","错误","抱歉!发生错误!请联系管理员!",1000)});
     });
     //iframe 展示
     var showTab=function(name){
@@ -174,7 +216,7 @@
        if(tarBtn!="IF_0"){
            var suc=function(){
            var url="test/json/1.json";
-               MSConfig.Aja(url,{},"POST")
+               MSConfig.Ajax(url,{},"POST")
                    .done(function(data){
 
                        MSConfig.SwalAlert("success","删除!","标签页已删除!");
@@ -201,7 +243,7 @@
         }else{
             var suc=function(){
                 var url="test/json/1.json";
-                MSConfig.Aja(url,{},"POST")
+                MSConfig.Ajax(url,{},"POST")
                     .done(function(data){
                         $(".btn-container-items .btn i").not(".btn-container-items ."+tarBtn+" i").trigger("click");
                         setTimeout(function () {
@@ -222,7 +264,7 @@
         }else{
             var suc=function(){
                 var url="test/json/1.json";
-                MSConfig.Aja(url,{},"POST")
+                MSConfig.Ajax(url,{},"POST")
                     .done(function(data){
                         MSConfig.SwalAlert("success","删除!","所有标签页已被删除!");
                         $(".btn-container-items .btn i").trigger("click");
@@ -247,7 +289,7 @@
    *  draggable
    * */
         var _pos=$(window).width()-100;
-        $('#gooey-v').udraggable({containment: [ 40, 40, _pos,_pos]});
+        $('#gooey-v').udraggable({containment: [40,140, _pos,_pos]});
         /*
         ** gooeymenu
          */
@@ -340,12 +382,12 @@
         var h=$(window).height()-160;
         $("#defined-sel").css("maxHeight",h);
         setTimeout(function(){
-            var flag=store.get("MS_definedTab");
             $("#defined-sel").mCustomScrollbar("destroy");
             $("#defined-sel").mCustomScrollbar({
                 autoHideScrollbar:false,
                 theme:"dark"
             });
+            var flag=store.get("MS_definedTab");
             if(!flag){
                 $("#defineTab-pill input[type='checkbox']").each(function(i,v){
                     if($(v).data("chose")==true){
@@ -368,7 +410,7 @@
     $("body").on("click",".topic",initGD);
     $(".btn-container-items").on("click",".btn i",delBtn);
     $(".btn-container-items").on("click",".btn",changeTabIframe);
-    $("#li_more>div a").on('toolbarItemClick',moreTab);
+    $("body").on('toolbarItemClick',"#li_more>div a",moreTab);
     $("body").on("click","#close_cur",closeCur);
     $("body").on("click","#close_other",closeOther);
     $("body").on("click","#close_all",closeAll);

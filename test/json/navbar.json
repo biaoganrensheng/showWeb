@@ -1,0 +1,232 @@
+{
+    "res": 200,
+    "sucMsg": "成功",
+    "list": [
+        {
+            "title": "主页",
+            "items": [
+                {
+                    "text": "主页",
+                    "url": "test/html/0.html",
+                    "iframeName": "IF_0"
+                }
+            ]
+        },
+        {
+            "title": "业务中心",
+            "items": [
+                {
+                    "text": "业务中心1",
+                    "url": "test/html/1.html",
+                    "iframeName": "IF_1",
+                    "ischecked":true,
+                    "color":"pink"
+                },
+                {
+                    "text": "业务中心2",
+                    "url": "test/html/2.html",
+                    "iframeName": "IF_2",
+                    "ischecked":false,
+                    "color":"light-blue"
+                },
+                {
+                    "text": "业务中心3",
+                    "url": "test/html/3.html",
+                    "iframeName": "IF_3",
+                    "ischecked":false,
+                    "color":"indigo"
+                }
+            ]
+        },
+        {
+            "title": "数据中心",
+            "items": [
+                {
+                    "text": "数据中心1",
+                    "url": "test/html/4.html",
+                    "iframeName": "IF_4",
+                    "ischecked":true,
+                    "color":"purple"
+                },
+                {
+                    "text": "数据中心2",
+                    "url": "test/html/5.html",
+                    "iframeName": "IF_5",
+                    "ischecked":false,
+                    "color":"orange"
+                },
+                {
+                    "text": "数据中心3",
+                    "url": "test/html/6.html",
+                    "iframeName": "IF_6",
+                    "ischecked":false,
+                    "color":"green"
+                }
+            ]
+        },
+        {
+            "title": "信息交流",
+            "items": [
+                {
+                    "text": "信息交流1",
+                    "url": "test/html/7.html",
+                    "iframeName": "IF_7",
+                    "ischecked":true,
+                    "color":"green"
+                },
+                {
+                    "text": "信息交流2",
+                    "url": "test/html/8.html",
+                    "iframeName": "IF_8",
+                    "ischecked":false,
+                    "color":"orange"
+                },
+                {
+                    "text": "信息交流3",
+                    "url": "test/html/9.html",
+                    "iframeName": "IF_9",
+                    "ischecked":false,
+                    "color":"indigo"
+                }
+            ]
+        },
+        {
+            "title": "统计分析",
+            "items": [
+                {
+                    "text": "统计分析1",
+                    "url": "test/html/10.html",
+                    "iframeName": "IF_10",
+                    "ischecked":true,
+                    "color":"pink"
+                },
+                {
+                    "text": "统计分析2",
+                    "url": "test/html/11.html",
+                    "iframeName": "IF_11",
+                    "ischecked":false,
+                    "color":"light-blue"
+                },
+                {
+                    "text": "统计分析3",
+                    "url": "test/html/12.html",
+                    "iframeName": "IF_12",
+                    "ischecked":false,
+                    "color":"purple"
+                }
+            ]
+        },
+        {
+            "title": "系统管理",
+            "items": [
+                {
+                    "text": "系统管理1",
+                    "url": "test/html/13.html",
+                    "iframeName": "IF_13",
+                    "ischecked":true,
+                    "color":"purple"
+                },
+                {
+                    "text": "系统管理2",
+                    "url": "test/html/14.html",
+                    "iframeName": "IF_14",
+                    "ischecked":false,
+                    "color":"indigo"
+                },
+                {
+                    "text": "系统管理3",
+                    "url": "test/html/15.html",
+                    "iframeName": "IF_15",
+                    "ischecked":false,
+                    "color":"pink"
+                }
+            ]
+        },
+        {
+            "title": "更多",
+            "items": [
+                {
+                    "text": "QQ",
+                    "id": "QQ",
+                    "items": [
+                        {
+                            "text": "QQ音乐",
+                            "url": "test/html/16.html",
+                            "iframeName": "IF_16",
+                            "ischecked":false,
+                            "color":"pink"
+                        },
+                        {
+                            "text": "QQ游戏",
+                            "url": "test/html/17.html",
+                            "iframeName": "IF_17",
+                            "ischecked":false,
+                            "color":"purple"
+                        },
+                        {
+                            "text": "QQ邮箱",
+                            "url": "test/html/18.html",
+                            "iframeName": "IF_18",
+                            "ischecked":false,
+                            "color":"orange"
+                        }
+                    ]
+                },
+                {
+                    "text": "微信",
+                    "id": "WX",
+                    "items": [
+                        {
+                            "text": "微信跳一跳",
+                            "url": "test/html/19.html",
+                            "iframeName": "IF_19",
+                            "ischecked":false,
+                            "color":"purple"
+                        },
+                        {
+                            "text": "微信小程序",
+                            "url": "test/html/20.html",
+                            "iframeName": "IF_20",
+                            "ischecked":false,
+                            "color":"green"
+                        },
+                        {
+                            "text": "微信公众号",
+                            "url": "test/html/21.html",
+                            "iframeName": "IF_21",
+                            "ischecked":false,
+                            "color":"green"
+                        }
+                    ]
+                },
+                {
+                    "text": "足球",
+                    "id": "ZQ",
+                    "items": [
+                        {
+                            "text": "贝克汉姆",
+                            "url": "test/html/22.html",
+                            "iframeName": "IF_22",
+                            "ischecked":false,
+                            "color":"orange"
+                        },
+                        {
+                            "text": "梅西",
+                            "url": "test/html/23.html",
+                            "iframeName": "IF_23",
+                            "ischecked":false,
+                            "color":"purple"
+                        },
+                        {
+                            "text": "C罗",
+                            "url": "test/html/24.html",
+                            "iframeName": "IF_24",
+                            "ischecked":false,
+                            "color":"green"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

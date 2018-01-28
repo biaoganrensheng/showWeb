@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="Ms.ico" type="images/x-icon"/>
     <link rel="icon" href="Ms.ico" type="images/x-icon"/>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="src/plugins/AWEFONT/css/font-awesome.css">
     <!-- GDT-->
     <link rel="stylesheet" href="src/plugins/GDT/jquery.mCustomScrollbar.css">
     <!--TOT-->
@@ -41,7 +41,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto" id="click_navbar">
+                <div id="navbarContainer">
+                    <!--navbar 模板-->
+                    <!--<ul class="navbar-nav mr-auto" id="click_navbar">
                     <li class="nav-item active" id="trigger_index">
                         <a class="nav-link waves-effect waves-light topic" data-href="test/html/0.html" data-changeIf="IF_0">主页</a>
                     </li>
@@ -106,7 +108,8 @@
                             <a class="dropdown-item waves-effect waves-light" href="javascript:;" id="ZQ">足球</a>
                         </div>
                     </li>
-                </ul>
+                </ul>-->
+                </div>
                 <ul class="navbar-nav ml-auto nav-flex-icons paddingRt-navbar">
                     <li class="nav-item">
                         <a class="nav-link waves-effect waves-light">犬夜叉,欢迎登陆</a>
@@ -119,7 +122,6 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-purple"
                              aria-labelledby="navbarDropdownMenuLink-5">
                             <a class="dropdown-item waves-effect waves-light" href="javascript:;">编辑个人资料</a>
-                            <!--data-target="#defineTheme"-->
                             <a class="dropdown-item waves-effect waves-light" id="definedDz" href="javascript:;" data-toggle="modal"  data-target="#defineTheme">个性化定制</a>
                             <a class="dropdown-item waves-effect waves-light" id="definedOut" href="javascript:;">退出登录</a>
                         </div>
@@ -147,7 +149,8 @@
                 </div>
             </div>
             <div id="tooltip-defined">
-                <div id="toolbar-options-QQ" class="hidden">
+                <!--moretab模板-->
+                <!--<div id="toolbar-options-QQ" class="hidden">
                     <a data-href="test/html/16.html" data-changeIf="IF_16" class="more-tabs">QQ音乐</a>
                     <a data-href="test/html/17.html" data-changeIf="IF_17" class="more-tabs">QQ游戏</a>
                     <a data-href="test/html/18.html" data-changeIf="IF_18" class="more-tabs">QQ邮箱</a>
@@ -161,7 +164,7 @@
                     <a data-href="test/html/22.html" data-changeIf="IF_22" class="more-tabs">贝克汉姆</a>
                     <a data-href="test/html/23.html" data-changeIf="IF_23" class="more-tabs">梅西</a>
                     <a data-href="test/html/24.html" data-changeIf="IF_24" class="more-tabs">C罗</a>
-                </div>
+                </div>-->
             </div>
         </nav>
     </header>
@@ -222,7 +225,8 @@
         </div>
     </footer>
     <div class="history-page">
-        <div id="gooey-v">
+        <!--controlBar 模板-->
+        <!--<div id="gooey-v">
             <input type="checkbox" class="menu-open" name="menu-open4" id="menu-open4"/>
             <label class="open-button" for="menu-open4">
                 <span class="burger burger-1"></span>
@@ -236,6 +240,17 @@
                 <a data-href="test/html/4.html" data-content="信息交流1" data-changeIf="IF_7" class="gooey-menu-item topic" data-tipso="信息交流1"> <i class="fa fa-file fa-2x"></i> </a>
                 <a data-href="test/html/5.html" data-content="统计分析1" data-changeIf="IF_10" class="gooey-menu-item topic" data-tipso="统计分析1"> <i class="fa fa-paper-plane fa-2x"></i> </a>
                 <a data-href="test/html/6.html" data-content="系统管理1" data-changeIf="IF_13" class="gooey-menu-item topic" data-tipso="系统管理1"> <i class="fa fa-file-text-o  fa-2x"></i> </a>
+            </span>
+        </div>-->
+        <div id="gooey-v">
+            <input type="checkbox" class="menu-open" name="menu-open4" id="menu-open4"/>
+            <label class="open-button" for="menu-open4">
+                <span class="burger burger-1"></span>
+                <span class="burger burger-2"></span>
+                <span class="burger burger-3"></span>
+            </label>
+            <span id="page-container">
+
             </span>
         </div>
     </div>
@@ -306,7 +321,7 @@
                     <h1 class="h3-responsive defineTab">定制我的标签</h1>
                     <p class="lead">选择自己喜欢的标签(最多6个)</p>
                     <form class="form-inline" id="defineTab-pill">
-                        <div class="form-group">
+                       <!-- <div class="form-group">
                             <input type="checkbox" id="checkbox11" value="业务中心1" data-chose="true" data-itemurl="test/html/1.html" data-itemiframe="IF_1">
                             <label for="checkbox11">
                                 <span class="badge badge-pill pink">业务中心1</span>
@@ -359,7 +374,7 @@
                             <label for="checkbox33">
                                 <span class="badge badge-pill indigo">信息交流3</span>
                             </label>
-                        </div>
+                        </div>-->
                     </form>
                 </div>
 
@@ -371,9 +386,9 @@
         </div>
     </div>
 </div>
+<div id="out"></div>
 <!-- MDB -->
-<!--<script type="text/javascript" src="src/plugins/MDB/js/jquery-3.2.1.min.js"></script>-->
-<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="src/plugins/MDB/js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="src/plugins/MDB/js/popper.min.js"></script>
 <script type="text/javascript" src="src/plugins/MDB/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="src/plugins/MDB/js/mdb.min.js"></script>
@@ -397,12 +412,14 @@
 <script src="src/plugins/SAVE/cdnstore.js"></script>
 <!--TOOLTIP-->
 <script src="src/plugins/TOOLTIP/js/tipso.min.js"></script>
-<!--DRAG-->
-<script src="src/plugins/DRAG/js/draggabilly.pkgd.min.js"></script>
+<!--ART-->
+<script src="src/plugins/ART/art.js"></script>
 <script src="src/js/layout.js"></script>
 <script src="src/js/config.js"></script>
 <script src="src/js/index.js"></script>
+
 <script>
+
 
 </script>
 </body>
