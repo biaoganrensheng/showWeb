@@ -16,6 +16,7 @@
     "gulp": "^3.9.1",
     "jquery": "^2.1.4",
     "mdbootstrap": "^4.4.4",
-    "sweetalert": "^2.1.0"
+    "sweetalert": "^2.1.0",
+    "whatwg-fetch": "^2.0.3"
   }
 }

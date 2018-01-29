@@ -186,6 +186,7 @@ html,body{height:100%;}
     padding-top:152px;
     padding-left: 0;
     padding-right: 0;
+    padding-bottom:0;
 }
 #content-box>.tab-item{
     display: none;
@@ -258,3 +259,4 @@ html,body{height:100%;}
 .loginBtn{
     /*width:240px;*/
 }
+

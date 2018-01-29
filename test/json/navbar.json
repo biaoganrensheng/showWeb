@@ -7,7 +7,7 @@
             "items": [
                 {
                     "text": "主页",
-                    "url": "test/html/0.html",
+                    "url": "src/areaTree.html",
                     "iframeName": "IF_0"
                 }
             ]
@@ -19,6 +19,7 @@
                     "text": "业务中心1",
                     "url": "test/html/1.html",
                     "iframeName": "IF_1",
+                    "icon":"fa-bookmark",
                     "ischecked":true,
                     "color":"pink"
                 },
@@ -46,6 +47,7 @@
                     "url": "test/html/4.html",
                     "iframeName": "IF_4",
                     "ischecked":true,
+                    "icon":"fa-file-text",
                     "color":"purple"
                 },
                 {
@@ -72,6 +74,7 @@
                     "url": "test/html/7.html",
                     "iframeName": "IF_7",
                     "ischecked":true,
+                    "icon":"fa-columns",
                     "color":"green"
                 },
                 {
@@ -98,6 +101,7 @@
                     "url": "test/html/10.html",
                     "iframeName": "IF_10",
                     "ischecked":true,
+                    "icon":"fa-file",
                     "color":"pink"
                 },
                 {
@@ -124,6 +128,7 @@
                     "url": "test/html/13.html",
                     "iframeName": "IF_13",
                     "ischecked":true,
+                    "icon":"fa-paper-plane",
                     "color":"purple"
                 },
                 {

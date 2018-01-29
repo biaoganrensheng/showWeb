@@ -31,6 +31,7 @@
                 $("#change-size").css({"left":15,"top":"88px"});
             }
             $(this).removeClass("sizeFlag");
+            $(".page-footer").show();
         }else{
             $(this).addClass("sizeFlag");
             $("#changeContainer").removeClass("container-fluid");
@@ -38,6 +39,7 @@
             $("#content-box").css("paddingTop",0);
             $(this).find(".fa").attr("class","fa fa-compress");
             $(this).css({"left":0,"top":0});
+            $(".page-footer").hide();
         }
     };
     pageScroll();

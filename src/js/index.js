@@ -79,9 +79,11 @@
     };
     //初始化Iframe 的高度
     var heightIframe=function (dom) {
+        var Wheight=$(window).height()-$(".g-header").outerHeight();
         dom.load(function () {
             var mainheight = $(this).contents().find("body").height() + 60;
-            $(this).height(mainheight);
+            var realH=(mainheight<Wheight?Wheight:mainheight);
+            $(this).height(realH);
         });
     };
     //删除按钮的操作
@@ -382,11 +384,12 @@
         var h=$(window).height()-160;
         $("#defined-sel").css("maxHeight",h);
         setTimeout(function(){
-            $("#defined-sel").mCustomScrollbar("destroy");
+         /*$("#defined-sel").mCustomScrollbar("destroy");
             $("#defined-sel").mCustomScrollbar({
                 autoHideScrollbar:false,
                 theme:"dark"
-            });
+            });*/
+             MSConfig.Gdt("#defined-sel");
             var flag=store.get("MS_definedTab");
             if(!flag){
                 $("#defineTab-pill input[type='checkbox']").each(function(i,v){

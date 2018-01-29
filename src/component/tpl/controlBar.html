@@ -2,7 +2,11 @@
 {{if(key<6)&&(key>0)}}
 {{each item.items item2 key2}}
 {{if(key2==0)}}
+{{if(item2.icon)}}
+<a data-href="{{item2.url}}" data-content="{{item2.text}}" data-changeIf="{{item2.iframeName}}" class="gooey-menu-item topic" data-tipso="{{item2.text}}"><i class="fa {{item2.icon}} fa-2x"></i> </a>
+{{else}}
 <a data-href="{{item2.url}}" data-content="{{item2.text}}" data-changeIf="{{item2.iframeName}}" class="gooey-menu-item topic" data-tipso="{{item2.text}}"><i class="fa fa-bookmark fa-2x"></i> </a>
+{{/if}}
 {{/if}}
 {{/each}}
 {{/if}}

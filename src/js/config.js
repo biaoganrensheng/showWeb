@@ -58,6 +58,15 @@ var MSConfig=(function($,doc,win){
                 $(dom).mLoading("hide");
             }
         };
+        Config.Gdt=function(dom){
+            setTimeout(function(){
+                $(dom).mCustomScrollbar("destroy");
+                $(dom).mCustomScrollbar({
+                    autoHideScrollbar:true,
+                    theme:"dark"
+                });
+            },200);
+        };
         Config.Ajax=function(reqUrl,reqData,reqType,resType,contentType,reqTime){
         var AJAX=$.ajax({
             url:reqUrl,
@@ -86,10 +95,10 @@ var MSConfig=(function($,doc,win){
         Config.Tpl=function(htmlUrl,domid,sendData){
             if(htmlUrl == '') return;
             $.get(htmlUrl, function(data) {
-                console.log(data);
+                //console.log(data);
                 var render = template.compile(data);
                 var html = render(sendData);
-                console.log(html);
+               // console.log(html);
                 document.getElementById(domid).innerHTML = html;
             });
         };

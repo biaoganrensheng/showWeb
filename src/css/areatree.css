@@ -1,0 +1,35 @@
+/**********************************************************************tree*******************************************/
+html,body{
+    overflow-x: hidden;
+}
+.seach-tj{
+    padding-left:20px;
+}
+.layoutcontainer{
+    padding:0 15px;
+    padding-bottom: 15px;
+}
+.layTop{
+    padding-top:20px;
+    padding-bottom: 10px;
+}
+#showView{
+    overflow-y: auto;
+    max-height:300px;
+    margin-right:-20px;
+    margin-left: -12px;
+}
+#showView .mCSB_container{
+    margin-right:8px;
+}
+#input-search{
+    width:100%;
+}
+#search-output{
+    width:95%;
+    margin:10px 0;
+    display: none;
+    max-height:200px;
+    overflow:auto;
+    font-size:14px;
+}
