@@ -116,7 +116,7 @@
 
     // 添加移入动效
     $(function(){
-        $(".ding-control-container").hover(function(e){
+     $(".ding-control-container").hover(function(e){
             e.preventDefault();
             e.stopPropagation();
             $(this).find(".control-btn-container").show();
