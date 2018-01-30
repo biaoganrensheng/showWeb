@@ -65,7 +65,7 @@ var MSConfig=(function($,doc,win){
                     autoHideScrollbar:true,
                     theme:"dark"
                 });
-            },200);
+            },100);
         };
         Config.Ajax=function(reqUrl,reqData,reqType,resType,contentType,reqTime){
         var AJAX=$.ajax({

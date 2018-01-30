@@ -1,7 +1,16 @@
 (function (win, doc, $) {
     $('.mdb-select').material_select();
+    var parentTreeArr=[];
     //TODO: 模拟自定义数据
-    //store.set("ms",data);'http://192.168.0.49:8080/beach_tz/analysis/testCtrlUnit'
+    function findPar(name){
+        if(name){
+            var obj=$('#showView').treeview('getParent',name);
+            if(parentTreeArr.indexOf(obj.text)==-1){
+                parentTreeArr.push(obj.text)
+            }
+            findPar(obj.nodeId)
+        }
+    }
     function getData(){
         $.ajax({
             url:"http://192.168.0.253:8080/beach_tz/analysis/testCtrlUnit",
@@ -50,17 +59,16 @@
                     };
                     var results = $searchableTree.treeview('search', [pattern, options]);
                     var output = '<p>发现 ' + results.length + ' 项匹配结果</p>';
-                    console.log(options);
                     if (pattern == "") {
                         $('#search-output').hide();
                         $('#showView').treeview('collapseAll', { silent: true });
                     } else {
                         $.each(results, function (index, result) {
-                            output += '<p>- ' + result.text + '</p>';
+                          output += '<p data-node="'+result.nodeId+'" data-id="'+result.id+'" data-pid="'+result.pid+'" data-text="'+result.text+'">- ' + result.text + '</p>';
                         });
                         $('#outputArea').html(output);
-                        $('#search-output').show();
                         MSConfig.Gdt("#search-output");
+                        $('#search-output').show();
                     }
                 };
                 $('#btn-search').on('click', searchCity);
@@ -69,13 +77,13 @@
                     $searchableTree.treeview('clearSearch');
                     $('#showView').treeview('collapseAll', { silent: true });
                     $('#input-search').val('');
-                    $('#search-output').html('').hide();
+                    $('#outputArea').html("");
+                    $('#search-output').hide();
                 });
                 $('#showView').on('nodeSelected', function(event, data) {
                     // 事件代码...
                     MSConfig.Gdt("#showView");
                     var clickTarget = data.text;
-                    var nodeId=data.nodeId;
                     var parentArr=$('#showView').treeview('getExpanded',data.nodeId);
                     var parentCity="";
                     parentArr.forEach(function(v){
@@ -88,101 +96,87 @@
                 });
                 $("#showView").on("nodeCollapsed ",function(){
                     MSConfig.Gdt("#showView");
+                });
+                $("#outputArea").on("click","p",function(e){
+                    e.stopPropagation();
+                    $(this).addClass("activeShow").siblings("p").removeClass("activeShow");
+                    var nodeId=$(this).data("node");
+                    var id=$(this).data("id");
+                    var pid=$(this).data("pid");
+                    var text=$(this).data("text");
+                    findPar(nodeId);
+                    var parentArea="当前所在位置是:"+parentTreeArr.reverse().join('')+text;
+                    MSConfig.Toastr("info",parentArea,'4000','toast-top-left');
+                    parentTreeArr=[];
                 })
             }
         })
     }
     getData();
-    //TODO: 初始化树形插件
-    //datatable 配置
-    $(doc).ready( function() {
-        aa=$('.dataTables-show').DataTable( {
-         "aoColumnDefs": [
+
+    // 添加移入动效
+    $(function(){
+        $(".ding-control-container").hover(function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).find(".control-btn-container").show();
+            $(this).find(".control-btn").removeClass("fadeOutRight").addClass("animated fadeInRight");;
+        },function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).find(".control-btn").removeClass("fadeInRight").addClass("fadeOutRight");
+        });
+        $('.dataTables-show').DataTable( {
+            "aoColumnDefs": [
                 { "bSortable": false, "aTargets": [0,8] }
             ] });
-        console.log(aa.data());
-    } );
+    });
 
-    // 全选按钮
-    $(".table").on("click","INPUT[name='checkbox_name[]']",function () {
-
+    var singleSelect=function () {
         var flag=true;
-        $("INPUT[name='checkbox_name[]']").each(function (i,v) {
+        $("input[name='checkbox_name[]']").each(function (i,v) {
             if(false == $(v).is(':checked')){
                 $(".userList_check_control").prop("checked",false);
                 flag=false;
             }
-        })
+        });
         if(flag){
             $(".userList_check_control").prop("checked",true);
         }
-    })
-
-    $(".userList_check_control").bind("click", function () {
+    };
+    var allSelect=function () {
         if($('.userList_check_control').is(':checked') == true){
-            $("INPUT[name='checkbox_name[]']").each( function() {
+            $("input[name='checkbox_name[]']").each( function() {
                 if(false == $(this).is(':checked')){
                     $(this).prop("checked", true);
                 }
             });
         }
         if($('.userList_check_control').is(':checked') == false){
-            $("INPUT[name='checkbox_name[]']").each( function() {
+            $("input[name='checkbox_name[]']").each( function() {
                 if(true == $(this).is(':checked')){
                     $(this).prop("checked", false);
                 }
             });
         }
-    });
-    //  批量删除
-    $(".batch").on("click", function(e) {
+    };
+    var delOneLine=function(e){
         e.preventDefault();
-        0 == $(".table tbody :checkbox:checked").length
-            ? ms.msg("请选择需要删除的数据！",0,2000) :
-            ms.confirm("警告","确定要删除吗?",0,"确定","取消",function() {
-                $(".table tbody :checkbox:checked").parents("tr").remove(),
-                    ms.msg("已删除",1,600);
-            })
-    })
-    //    添加用户
-    $("#add_user").on("click", function() {
-        var e = $(this).html();
-        var t="add_user.html";
-        ms.open(e, t, "1000", "600")
-    }),
-        //    删除一行
-        $(".table ").on("click",".ding_control div a.del",function (e) {
-            e.preventDefault();
-            var t=$(this);
-            ms.confirm("警告","确定要删除吗?",0,"确定","取消",function() {
-                t.parent().parent().parent().parent().remove();
-                ms.msg("已删除",1,600);
-            })
-        })
-    //    重新启用或停用
-    $(".table ").on("click",".ding_control div a.go",function (e) {
-        e.preventDefault();
-        var t=$(this);
-        if(t.text()=="启用"){
-            ms.confirm("警告","确定要启用吗?",0,"确定","取消",function(){
-                t.html("停用");
-                t.parent().parent().parent().prev().html('<button class="btn btn-info btn-xs" style="margin-bottom: 0px;">已启用</button>');
-                ms.msg("已启用",5,600);
-            })
-        }else{
-            ms.confirm("警告","确认要停用吗?",0,"确定","取消",function(){
-                t.html("启用");
-                t.parent().parent().parent().prev().html('<button class="btn btn-default btn-xs" style="margin-bottom: 0px;background:#E6E6E6;">已停用</button>');
-                ms.msg("已停用",5,600);
-            })
-        }
-    })
-    //    编辑
-    $(".table ").on("click",".ding_control div a.edit",function (e) {
-        e.preventDefault();
-        var data=aa.row().data();
-        var e = $(this).html();
-        var t="add_user.html";
-        ms.open(e, t,"1000", "600");
-    })
+        var line=$(this);
+        var delinfo=function(){
+            var url="../test/json/1.json";
+            MSConfig.Ajax(url,{},"POST")
+                .done(function(data){
+                    line.parents("tr").remove();
+                    MSConfig.SwalAlert("success","成功","删除成功!",1000);
+                })
+                .fail(function(error){
+                    MSConfig.SwalAlert("error","OMG", "删除操作失败了!");
+                });
+        };
+        MSConfig.SwalConfirm("error","删除","您确定要删除本行数据吗?",delinfo);
+    };
+    $(".dataTables-show").on("click","input[name='checkbox_name[]']",singleSelect);
+    $(".dataTables-show").on("click",".userList_check_control",allSelect);
+    $(".dataTables-show ").on("click",".control-btn .btn.tab-del",delOneLine);
 })(window, document, jQuery);

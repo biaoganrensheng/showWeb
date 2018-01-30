@@ -33,3 +33,15 @@ html,body{
     overflow:auto;
     font-size:14px;
 }
+#outputArea p{
+    cursor:pointer;
+}
+#outputArea p:hover,#outputArea p:active{
+    color:#4285F4;
+}
+#outputArea p.activeShow{
+    color:#4285F4;
+}
+.card-gao{
+    margin-top: 20px;
+}

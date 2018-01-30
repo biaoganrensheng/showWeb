@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>管理后台</title>
-    <link rel="shortcut icon" href="Ms.ico" type="images/x-icon"/>
-    <link rel="icon" href="../../../Ms.ico" type="images/x-icon"/>
+    <link rel="shortcut icon" href="../Ms.ico" type="images/x-icon"/>
+    <link rel="icon" href="../Ms.ico" type="images/x-icon"/>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/AWEFONT/css/font-awesome.css">
     <!--ANIMATE-->
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/areatree.css">
     <style>
 
-        .dataTables-show .ding-control-container{
+       .dataTables-show .ding-control-container{
             background:url(images/biao_xuan.png) no-repeat center;
             position:relative;
             cursor: pointer;
@@ -45,7 +45,7 @@
            width:106px;
             height:40px;
         }
-       /*#DataTables_Table_0_length select{
+       #DataTables_Table_0_length select{
             display: block !important;
             width: 75px !important;
             height: 26px !important;
@@ -68,30 +68,76 @@
         }
         table.dataTable thead .sorting_asc {
             background:none;
-        }*/
-        table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after {
-            padding: 5px;
         }
-        .dataTables_wrapper .mdb-select {
-            border: none;
-            float: left;
-        }
-        .dataTables_wrapper .mdb-select.form-control {
-            padding-top: 0;
-            margin-top: -1rem;
-            margin-left: 0.7rem;
-            margin-right: 0.7rem;
-            width: 100px;
-        }
-        .dataTables_length label {
-            float: left;
-        }
-        table.dataTable {
-            margin-bottom: 3rem!important;
-        }
-        div.dataTables_wrapper div.dataTables_info {
-            padding-top: 0;
-        }
+
+
+       .pagination > li:first-child > a, .pagination > li:first-child > span {
+           margin-left: 0;
+           border-top-left-radius: 4px;
+           border-bottom-left-radius: 4px;
+       }
+       .pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+           color: #777;
+           cursor: not-allowed;
+           background-color: #fff;
+           border-color: #ddd;
+       }
+       .pagination > li > a, .pagination > li > span {
+        background-color: #FFFFFF;
+        border: 1px solid #DDDDDD;
+        color: inherit;
+        float: left;
+        line-height: 1.42857;
+        margin-left: -1px;
+        padding: 4px 10px;
+        position: relative;
+        text-decoration: none;
+       }
+       .pagination > li:first-child > a, .pagination > li:first-child > span {
+           margin-left: 0;
+           border-top-left-radius: 4px;
+           border-bottom-left-radius: 4px;
+       }
+
+       .pagination > li:first-child > a, .pagination > li:first-child > span {
+           margin-left: 0;
+           border-top-left-radius: 4px;
+           border-bottom-left-radius: 4px;
+       }
+       .pagination > li:last-child > a, .pagination > li:last-child > span {
+           border-top-right-radius: 4px;
+           border-bottom-right-radius: 4px;
+       }
+       .pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+           color: #777;
+           cursor: not-allowed;
+           background-color: #fff;
+           border-color: #ddd;
+       }
+       .pagination > .active > a,
+       .pagination > .active > span,
+       .pagination > .active > a:hover,
+       .pagination > .active > span:hover,
+       .pagination > .active > a:focus,
+       .pagination > .active > span:focus {
+           background-color: #f4f4f4;
+           border-color: #DDDDDD;
+           color: inherit;
+           cursor: default;
+           z-index: 2;
+       }
+       .pagination > li > a,
+       .pagination > li > span {
+           background-color: #FFFFFF;
+           border: 1px solid #DDDDDD;
+           color: inherit;
+           float: left;
+           line-height: 1.42857;
+           margin-left: -1px;
+           padding: 4px 10px;
+           position: relative;
+           text-decoration: none;
+       }
     </style>
 </head>
 <body>
@@ -99,8 +145,8 @@
     <div class="row layTop">
         <div class="col-sm-2">
             <div class="card">
-                <h6 class="card-header primary-color white-text seach-tj" >查询条件</h6>
-                <div class="card-body">
+                <h6 class="card-header primary-color white-text seach-tj"  data-toggle="collapse" data-target="#searchTree">查询条件</h6>
+                <div class="card-body" id="searchTree">
                     <div class="row layoutcontainer">
                         <div class="form-group">
                             <div class="md-form form-sm">
@@ -123,308 +169,428 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <button type="button" class="btn btn-success btn-md" id="btn-search">搜索
+                                <button type="button" class="btn btn-cyan btn-none" id="btn-search">搜索
                                 </button>
                             </div>
                             <div class="col-sm-6">
-                                <button type="button" class="btn btn-default btn-md" id="btn-clear-search">
+                                <button type="button" class="btn btn-cyan btn-none" id="btn-clear-search">
                                     清空
                                 </button>
                             </div>
                         </div>
                         <div class="card mdb-color z-depth-2" id="search-output">
                             <div class="card-body">
-                                <p class="white-text mb-0" id="outputArea"></p>
+                                <div class="white-text mb-0" id="outputArea">
+
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div id="showView"></div>
                 </div>
             </div>
+            <div class="card card-gao">
+                <h6 class="card-header warning-color-dark white-text"  data-toggle="collapse" data-target="#searchInput">查询条件</h6>
+                <div class="card-body" id="searchInput">
+
+                </div>
+            </div>
         </div>
         <div class="col-sm-10">
-            <table class="table table-striped table-bordered table-hover dataTables-show table-responsive w-auto">
-                <thead>
-                <tr>
-                    <th>
-                        <input type="checkbox" class="checkbox" id="aa" value="false">
-                        <label for="aa">
-                        </label>
-                    </th>
-                    <th>ID</th>
-                    <th>用户名</th>
-                    <th>性别</th>
-                    <th>手机</th>
-                    <th>身份证号</th>
-                    <th>邮箱</th>
-                    <th>地址</th>
-                    <th>加入时间</th>
-                    <th style="border-left:none;background: #fff;"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="checkbox_name[]">
-                    </td>
-                    <td>
-                        13
-                    </td>
-                    <td>
-                        金少
-                    </td>
-                    <td>男</td>
-                    <td>16964554564</td>
-                    <td>16454646546544545466</td>
-                    <td>16964554564@qq.com</td>
-                    <td>杭州市西湖区骆家庄
-                    </td>
-                    <td>2016-12-22</td>
-                    <td class="ding-control-container">
-                        <div class="control-btn-container">
-                            <p class="control-btn mdb-color">
-                                <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
-                                <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
-                                <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
-                                <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
-                                <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
-                                <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
-                                <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="checkbox_name[]">
-                    </td>
-                    <td>
-                        14
-                    </td>
-                    <td>
-                        金少
-                    </td>
-                    <td>男</td>
-                    <td>16964554564</td>
-                    <td>16454646546544545466</td>
-                    <td>16964554564@qq.com</td>
-                    <td>杭州市西湖区骆家庄</td>
-                    <td>2016-12-22</td>
-                    <td class="ding-control-container">
-                        <div class="control-btn-container">
-                            <p class="control-btn mdb-color">
-                                <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
-                                <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
-                                <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="checkbox_name[]">
-                    </td>
-                    <td>
-                        15
-                    </td>
-                    <td>
-                        金少
-                    </td>
-                    <td>男</td>
-                    <td>16964554564</td>
-                    <td>16454646546544545466</td>
-                    <td>16964554564@qq.com</td>
-                    <td>杭州市西湖区骆家庄</td>
-                    <td>2016-12-22</td>
-                    <td class="ding-control-container">
-                        <div class="control-btn-container">
-                            <p class="control-btn mdb-color">
-                                <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
-                                <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
-                                <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
-                                <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="checkbox_name[]">
-                    </td>
-                    <td>
-                        11
-                    </td>
-                    <td>
-                        金少
-                    </td>
-                    <td>男</td>
-                    <td>16964554564</td>
-                    <td>16454646546544545466</td>
-                    <td>16964554564@qq.com</td>
-                    <td>杭州市西湖区骆家庄</td>
-                    <td>2016-12-22</td>
-                    <td class="ding-control-container">
-                        <div class="control-btn-container">
-                            <p class="control-btn mdb-color">
-                                <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
-                                <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="checkbox_name[]">
-                    </td>
-                    <td>
-                        11
-                    </td>
-                    <td>
-                        金少
-                    </td>
-                    <td>男</td>
-                    <td>16964554564</td>
-                    <td>16454646546544545466</td>
-                    <td>16964554564@qq.com</td>
-                    <td>杭州市西湖区骆家庄</td>
-                    <td>2016-12-22</td>
-                    <td class="ding-control-container">
-                        <div class="control-btn-container">
-                            <p class="control-btn mdb-color">
-                                <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
-                                <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
-                                <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
-                                <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
-                                <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
-                                <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
-                                <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="checkbox_name[]">
-                    </td>
-                    <td>
-                        11
-                    </td>
-                    <td>
-                        金少
-                    </td>
-                    <td>男</td>
-                    <td>16964554564</td>
-                    <td>16454646546544545466</td>
-                    <td>16964554564@qq.com</td>
-                    <td>杭州市西湖区骆家庄</td>
-                    <td>2016-12-22</td>
-                    <td class="ding-control-container">
-                        <div class="control-btn-container">
-                            <p class="control-btn mdb-color">
-                                <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
-                                <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
-                                <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
-                                <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
-                                <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
-                                <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
-                                <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="checkbox_name[]">
-                    </td>
-                    <td>
-                        11
-                    </td>
-                    <td>
-                        金少
-                    </td>
-                    <td>男</td>
-                    <td>16964554564</td>
-                    <td>16454646546544545466</td>
-                    <td>16964554564@qq.com</td>
-                    <td>杭州市西湖区骆家庄 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aspernatur dolor doloremque eum incidunt ipsa, perferendis quas quos rem saepe, soluta vel. Aliquid esse inventore labore magnam quod rerum.
-                        jsfdjfsdlkjflsdjflsdjfsdjflksdjflksdfjlsdjflsdjflsdkjflsdfjsldfjsdjflsdjflsdjflsdjflsdjflsdfjsdfjlsdfjjskdljflsdfjlsdfjldskfjlkdjf</td>
-                    <td>2016-12-22</td>
-                    <td class="ding-control-container">
-                        <div class="control-btn-container">
-                            <p class="control-btn mdb-color">
-                                <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
-                                <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
-                                <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
-                                <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
-                                <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="checkbox_name[]">
-                    </td>
-                    <td>
-                        11
-                    </td>
-                    <td>
-                        金少
-                    </td>
-                    <td>男</td>
-                    <td>16964554564</td>
-                    <td>16454646546544545466</td>
-                    <td>16964554564@qq.com</td>
-                    <td>杭州市西湖区骆家庄</td>
-                    <td>2016-12-22</td>
-                    <td class="ding-control-container">
-                        <div class="control-btn-container">
-                            <p class="control-btn mdb-color">
-                                <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
-                                <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
-                                <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
-                                <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
-                                <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="checkbox_name[]">
-                    </td>
-                    <td>
-                        11
-                    </td>
-                    <td>
-                        金少
-                    </td>
-                    <td>男</td>
-                    <td>16964554564</td>
-                    <td>16454646546544545466</td>
-                    <td>16964554564@qq.com</td>
-                    <td>杭州市西湖区骆家庄</td>
-                    <td>2016-12-22</td>
-                    <td class="ding-control-container">
-                        <div class="control-btn-container">
-                            <p class="control-btn mdb-color">
-                                <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
-                                <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
-                                <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
-                                <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
-                                <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
-                                <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
-                                <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
             <div class="card">
                 <h6 class="card-header primary-color white-text">数据列表</h6>
                 <div class="card-body">
-
+                    <table class="table table-striped table-bordered  table-hover dataTable dataTables-show table-responsive-sm" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" class="checkbox userList_check_control" id="th1" value="false">
+                                <label for="th1">
+                                </label>
+                            </th>
+                            <th>ID</th>
+                            <th>用户名</th>
+                            <th>性别</th>
+                            <th>手机</th>
+                            <th>身份证号</th>
+                            <th>邮箱</th>
+                            <th>地址</th>
+                            <th>加入时间</th>
+                            <th style="border-left:none;background: #fff;"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr1" value="false" name="checkbox_name[]">
+                                <label for="tr1">
+                                </label>
+                            </td>
+                            <td>
+                                13
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄
+                            </td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
+                                        <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
+                                        <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
+                                        <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
+                                        <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm tab-del">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr2" value="false" name="checkbox_name[]">
+                                <label for="tr2">
+                                </label>
+                            </td>
+                            <td>
+                                14
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr3" value="false" name="checkbox_name[]">
+                                <label for="tr3">
+                                </label>
+                            </td>
+                            <td>
+                                15
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
+                                        <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr4" value="false" name="checkbox_name[]">
+                                <label for="tr4">
+                                </label>
+                            </td>
+                            <td>
+                                11
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr5" value="false" name="checkbox_name[]">
+                                <label for="tr5">
+                                </label>
+                            </td>
+                            <td>
+                                11
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
+                                        <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
+                                        <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
+                                        <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
+                                        <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr6" value="false" name="checkbox_name[]">
+                                <label for="tr6">
+                                </label>
+                            </td>
+                            <td>
+                                11
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
+                                        <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
+                                        <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
+                                        <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
+                                        <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr7" value="false" name="checkbox_name[]">
+                                <label for="tr7">
+                                </label>
+                            </td>
+                            <td>
+                                11
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄 Lorem ipsum dolor sit amet, consectetur adipisicing elit. djf</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
+                                        <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
+                                        <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr8" value="false" name="checkbox_name[]">
+                                <label for="tr8">
+                                </label>
+                            </td>
+                            <td>
+                                11
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
+                                        <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
+                                        <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
+                                        <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
+                                        <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr9" value="false" name="checkbox_name[]">
+                                <label for="tr9">
+                                </label>
+                            </td>
+                            <td>
+                                11
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
+                                        <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
+                                        <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
+                                        <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
+                                        <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr10" value="false" name="checkbox_name[]">
+                                <label for="tr10">
+                                </label>
+                            </td>
+                            <td>
+                                11
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
+                                        <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
+                                        <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
+                                        <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
+                                        <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr11" value="false" name="checkbox_name[]">
+                                <label for="tr11">
+                                </label>
+                            </td>
+                            <td>
+                                11
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
+                                        <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
+                                        <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
+                                        <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
+                                        <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="tr12" value="false" name="checkbox_name[]">
+                                <label for="tr12">
+                                </label>
+                            </td>
+                            <td>
+                                11
+                            </td>
+                            <td>
+                                金少
+                            </td>
+                            <td>男</td>
+                            <td>16964554564</td>
+                            <td>16454646546544545466</td>
+                            <td>16964554564@qq.com</td>
+                            <td>杭州市西湖区骆家庄</td>
+                            <td>2016-12-22</td>
+                            <td class="ding-control-container">
+                                <div class="control-btn-container">
+                                    <p class="control-btn mdb-color">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
+                                        <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
+                                        <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
+                                        <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
+                                        <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
+                                        <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -454,12 +620,7 @@
 <script src="js/config.js"></script>
 <script src="js/areaTree.js"></script>
 <script>
-    $(".ding-control-container").hover(function(){
-       $(this).find(".control-btn-container").show();
-      $(this).find(".control-btn").removeClass("fadeOutRight").addClass("animated fadeInRight");;
-    },function(){
-       $(this).find(".control-btn").removeClass("fadeInRight").addClass("fadeOutRight");
-    })
+
 </script>
 </body>
 </html>
