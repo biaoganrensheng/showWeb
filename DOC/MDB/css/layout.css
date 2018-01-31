@@ -25840,7 +25840,7 @@ button.toast-close-button {
     display: inline-block !important
 }
 
-.picker__box .picker__date-display {
+.picker__box .picker__header .picker__date-display {
     text-align: center;
     background-color: #4285F4;
     padding-bottom: 15px;
@@ -25848,7 +25848,7 @@ button.toast-close-button {
     margin-bottom: 1rem
 }
 
-.picker__box .picker__date-display .picker__weekday-display {
+.picker__box .picker__header .picker__date-display .picker__weekday-display {
     background-color: #206ff2;
     padding: 10px;
     font-weight: 200;
@@ -25857,28 +25857,28 @@ button.toast-close-button {
     margin-bottom: 15px
 }
 
-.picker__box  .picker__date-display .picker__month-display {
+.picker__box .picker__header .picker__date-display .picker__month-display {
     text-transform: uppercase;
     font-size: 2rem
 }
 
-.picker__box .picker__date-display .picker__day-display {
+.picker__box .picker__header .picker__date-display .picker__day-display {
     font-size: 4.5rem;
     font-weight: 400
 }
 
-.picker__box  .picker__date-display .picker__year-display {
+.picker__box .picker__header .picker__date-display .picker__year-display {
     font-size: 1.8rem;
     color: rgba(255, 255, 255, .4)
 }
 
-.picker__box  .picker__month, .picker__box  .picker__year {
+.picker__box .picker__header .picker__month, .picker__box .picker__header .picker__year {
     display: inline-block;
     margin-left: .25em;
     margin-right: .25em
 }
 
-.picker__box  .picker__select--month, .picker__box .picker__select--year {
+.picker__box .picker__header .picker__select--month, .picker__box .picker__header .picker__select--year {
     height: 2em;
     padding: 0;
     margin-left: .25em;
@@ -25886,25 +25886,25 @@ button.toast-close-button {
     display: inline-block
 }
 
-.picker__box  .picker__select--month:focus, .picker__box  .picker__select--year:focus {
+.picker__box .picker__header .picker__select--month:focus, .picker__box .picker__header .picker__select--year:focus {
     border-color: rgba(0, 0, 0, .05)
 }
 
-.picker__box .picker__select--year {
+.picker__box .picker__header .picker__select--year {
     width: 30%
 }
 
-.picker__box .picker__select--month.browser-default {
+.picker__box .picker__header .picker__select--month.browser-default {
     display: inline;
     width: 40%
 }
 
-.picker__box  .picker__select--year.browser-default {
+.picker__box .picker__header .picker__select--year.browser-default {
     display: inline;
     width: 25%
 }
 
-.picker__box .picker__nav--next, .picker__box  .picker__nav--prev {
+.picker__box .picker__header .picker__nav--next, .picker__box .picker__header .picker__nav--prev {
     position: absolute;
     padding: .5em 1.55em;
     width: 1em;
@@ -25914,13 +25914,13 @@ button.toast-close-button {
     bottom: 0
 }
 
-.picker__box  .picker__nav--next:hover, .picker__box  .picker__nav--prev:hover {
+.picker__box .picker__header .picker__nav--next:hover, .picker__box .picker__header .picker__nav--prev:hover {
     cursor: pointer;
     color: #000;
     background: #ecf2fc
 }
 
-.picker__box .picker__nav--next:before, .picker__box  .picker__nav--prev:before {
+.picker__box .picker__header .picker__nav--next:before, .picker__box .picker__header .picker__nav--prev:before {
     content: " ";
     border-top: .5em solid transparent;
     border-bottom: .5em solid transparent;
@@ -25931,12 +25931,12 @@ button.toast-close-button {
     margin: 0 auto
 }
 
-.picker__box  .picker__nav--prev {
+.picker__box .picker__header .picker__nav--prev {
     left: -1em;
     padding-right: 1.25em
 }
 
-.picker__box  .picker__nav--next {
+.picker__box .picker__header .picker__nav--next {
     right: -1em;
     padding-left: 1.25em
 }
@@ -25946,7 +25946,7 @@ button.toast-close-button {
     border-left: .75em solid #676767
 }
 
-.picker__box  .picker__nav--disabled, .picker__box  .picker__nav--disabled:before, .picker__box  .picker__nav--disabled:before:hover, .picker__box .picker__header .picker__nav--disabled:hover {
+.picker__box .picker__header .picker__nav--disabled, .picker__box .picker__header .picker__nav--disabled:before, .picker__box .picker__header .picker__nav--disabled:before:hover, .picker__box .picker__header .picker__nav--disabled:hover {
     cursor: default;
     background: 0 0;
     border-right-color: #f5f5f5;

@@ -1,5 +1,4 @@
 (function (win, doc, $) {
-    $('.mdb-select').material_select();
     var parentTreeArr=[];
     //TODO: 模拟自定义数据
     function findPar(name){
@@ -116,22 +115,33 @@
 
     // 添加移入动效
     $(function(){
-     $(".ding-control-container").hover(function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).find(".control-btn-container").show();
-            $(this).find(".control-btn").removeClass("fadeOutRight").addClass("animated fadeInRight");;
-        },function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).find(".control-btn").removeClass("fadeInRight").addClass("fadeOutRight");
-        });
-        $('.dataTables-show').DataTable( {
+        var table=$('.dataTables-show').DataTable( {
             "aoColumnDefs": [
                 { "bSortable": false, "aTargets": [0,8] }
             ] });
+         $('.dataTables-show').on('length.dt', function ( e, settings, len ) {
+            table.on('draw', function () {
+                var _height=$('body').outerHeight();
+                var iframe=window.frameElement;
+                iframe.style.height=_height+'px';
+            });
+        });
+        $(".ding-control-container").hover(function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).find(".control-btn-container").show();
+            var h=$(this).find(".control-btn").height();
+           $(this).find(".control-btn").css("lineHeight",h+"px");
+            $(this).find(".control-btn").removeClass("fadeOutRight").addClass("animated fadeInRight");
+        },
+       function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).find(".control-btn").removeClass("fadeInRight").addClass("fadeOutRight");
+           $(this).find(".control-btn-container").hide('500');
+        });
+        MSConfig.Gdt("#searchInput");
     });
-
     var singleSelect=function () {
         var flag=true;
         $("input[name='checkbox_name[]']").each(function (i,v) {

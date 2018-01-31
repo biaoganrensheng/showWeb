@@ -25,10 +25,13 @@
        .dataTables-show .ding-control-container{
             background:url(images/biao_xuan.png) no-repeat center;
             cursor: pointer;
-           position:relative;
+            position:relative;
+            height:1px;
+            z-index: 10;
         }
         .dataTables-show .ding-control-container .control-btn-container{
             display: none;
+            height:100%;
         }
         .dataTables-show .ding-control-container .control-btn{
             position: absolute;
@@ -37,21 +40,16 @@
             bottom:0;
             z-index:999;
             height:100%;
-            display:table;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-            justify-content: space-between;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            cursor: pointer;
+            margin-bottom:0;
+            white-space: nowrap !important;
         }
         .dataTables-show .ding-control-container .control-btn .btn{
+            text-align:center !important;
             width:106px !important;
             height:40px !important;
+            box-sizing: border-box;
+            white-space: nowrap !important;
+            overflow: visible;
         }
        #DataTables_Table_0_length select{
             display: block !important;
@@ -151,13 +149,13 @@
 <body>
 <div class="container-fluid">
     <div class="row layTop">
-        <div class="col-sm-2">
+       <div class="col-sm-2">
             <div class="card">
                 <h6 class="card-header primary-color white-text seach-tj"  data-toggle="collapse" data-target="#searchTree">查询条件</h6>
                 <div class="card-body" id="searchTree">
                     <div class="row layoutcontainer">
                         <div class="form-group">
-                            <div class="sm-form form-sm">
+                            <div class="md-form form-sm">
                             <i class="fa fa-search prefix fa-2x"></i>
                             <input type="text" class="form-control" id="input-search" value="">
                             <label for="input-search" class="">请输入查询地址</label>
@@ -196,7 +194,66 @@
             <div class="card card-gao">
                 <h6 class="card-header warning-color-dark white-text"  data-toggle="collapse" data-target="#searchInput">查询条件</h6>
                 <div class="card-body" id="searchInput">
+                    <div class="jumbotron">
+                        <h6 class="h6-responsive red-text">高级搜索</h6>
+                            <div class="md-form">
+                                <input type="text" id="form11" class="form-control">
+                                <label for="form11" class="">处理人</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="text" id="form12" class="form-control">
+                                <label for="form12" class="">处理人</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="text" id="form13" class="form-control">
+                                <label for="form13" class="">处理人</label>
+                            </div>
+                    </div>
+                    <form action="">
+                        <div class="md-form">
+                            <input type="text" id="form1" class="form-control">
+                            <label for="form1" class="">处理人</label>
+                        </div>
+                    </form>
+                    <div class="md-form form-sm">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" id="form2" class="form-control">
+                        <label for="form2">交接人</label>
+                    </div>
+                    <div class="md-form">
+                        <input placeholder="请输入字段" type="text" id="form5" class="form-control">
+                        <label for="form5">问题</label>
+                    </div>
+                    <div class="md-form">
+                        <textarea type="text" id="form76" class="md-textarea"></textarea>
+                        <label for="form76">问题描述</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="checkbox1">
+                        <label for="checkbox1">复选框</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" class="filled-in" id="checkbox2">
+                        <label for="checkbox2">复选框</label>
+                    </div>
+                    <div class="form-group">
+                        <input name="group2" type="radio" class="with-gap" id="radio4">
+                        <label for="radio4">Option 1</label>
+                    </div>
 
+                    <div class="form-group">
+                        <input name="group2" type="radio" class="with-gap" id="radio5">
+                        <label for="radio5">Option 2</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input name="group2" type="radio" class="with-gap" id="radio6">
+                        <label for="radio6">Option 3</label>
+                    </div>
+                    <div class="md-form">
+                        <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
+                        <label for="date-picker-example">Try me...</label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -240,19 +297,19 @@
                             <td>16964554564</td>
                             <td>16454646546544545466</td>
                             <td>16964554564@qq.com</td>
-                            <td>杭州市西湖区骆家庄 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci deleniti, doloremque explicabo illum molestias natus, neque nobis optio perferendis perspiciatis quis quisquam repudiandae rerum sapiente sint ut velit, vero voluptatibus.
+                            <td>
+                                dfd Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi cum cumque debitis dicta dignissimos explicabo incidunt magnam, molestiae molestias odio omnis quis quo saepe vel vitae voluptatem voluptatibus voluptatum?
                             </td>
                             <td>2016-12-22</td>
                             <td class="ding-control-container">
                                 <div class="control-btn-container">
                                     <p class="control-btn mdb-color">
-                                        <button type="button" class="btn btn-primary btn-rounded btn-sm">更改密码</button>
-                                       <!-- <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
+                                        <button type="button" class="btn btn-default btn-rounded btn-sm">编辑</button>
                                         <button type="button" class="btn btn-secondary btn-rounded btn-sm">查看</button>
                                         <button type="button" class="btn btn-success btn-rounded btn-sm">启用</button>
                                         <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
                                         <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
-                                        <button type="button" class="btn btn-danger btn-rounded btn-sm tab-del">删除</button>-->
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm tab-del">删除</button>
                                     </p>
                                 </div>
                             </td>
@@ -277,11 +334,11 @@
                             <td>2016-12-22</td>
                             <td class="ding-control-container">
                                 <div class="control-btn-container">
-                                    <p class="control-btn mdb-color">
+                                    <div class="control-btn mdb-color">
                                         <button type="button" class="btn btn-info btn-rounded btn-sm">禁用</button>
                                         <button type="button" class="btn btn-warning btn-rounded btn-sm">重置</button>
                                         <button type="button" class="btn btn-danger btn-rounded btn-sm">删除</button>
-                                    </p>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -421,7 +478,9 @@
                             <td>16964554564</td>
                             <td>16454646546544545466</td>
                             <td>16964554564@qq.com</td>
-                            <td>杭州市西湖区骆家庄 Lorem ipsum dolor sit amet, consectetur adipisicing elit. djf</td>
+                            <td>
+                                dsdfadf
+                            </td>
                             <td>2016-12-22</td>
                             <td class="ding-control-container">
                                 <div class="control-btn-container">
@@ -624,7 +683,30 @@
 <script src="js/config.js"></script>
 <script src="js/areaTree.js"></script>
 <script>
-
+    $(document).ready(function() {
+        $('.mdb-select').material_select();
+        $('.datepicker').pickadate({
+            monthsFull: [ '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月' ],
+            monthsShort: [ '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二' ],
+            weekdaysFull: [ '星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六' ],
+            weekdaysShort: [ '日', '一', '二', '三', '四', '五', '六' ],
+            today: '今日',
+            clear: '清除',
+            close: '关闭',
+            firstDay: 1,
+            format: 'yyyy-mm-dd',
+            formatSubmit: 'yyyy/mm/dd',
+            selectMonths: true,
+            selectYears: true,
+            weekdaysLetter: [ '日', '一', '二', '三', '四', '五', '六' ],
+            labelMonthNext: '下一个月',
+            labelMonthPrev: '上一个月',
+            labelMonthSelect: '月份选择',
+            labelYearSelect: '年份选择',
+            min: new Date('1992-1-1'),
+            max: new Date('9999/12/12')
+        });
+    });
 </script>
 </body>
 </html>

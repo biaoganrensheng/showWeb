@@ -81,7 +81,7 @@
     var heightIframe=function (dom) {
         var Wheight=$(window).height()-$(".g-header").outerHeight();
         dom.load(function () {
-            var mainheight = $(this).contents().find("body").height() + 60;
+            var mainheight = $(this).contents().find("body").height()+108;
             var realH=(mainheight<Wheight?Wheight:mainheight);
             $(this).height(realH);
         });
@@ -421,4 +421,7 @@
     $("#defineTheme").on("click","#definedSave",definedSave);
     $("body").on("click","#definedDz",initScroll);
     $(".g-header").on("click","#definedOut",signOut);
+    function haha(){
+        console.log(555555555555555)
+    }
 })(jQuery,document,window);
