@@ -70,13 +70,15 @@ var MSConfig=(function($,doc,win){
     Config.Open=function (skin,html,width, height,defineTitle,pop) {
         null != width && "" != width || (width = 800);
         null != height && "" != height || (height= $(window).height() - 300);
-        var title="";
+        var title="",isFadeIN=0;
         switch(skin){
             case "add":
                 title="增加";
+                isFadeIN=.4;
                 break;
             case "edit":
                 title="编辑";
+                isFadeIN=.4;
                 break;
             case "look":
                 title="查看";
@@ -94,14 +96,25 @@ var MSConfig=(function($,doc,win){
             area: [width + "px", height + "px"],
             fix: !1,
             maxmin: !0,
-            shade:.4,
+            shade:isFadeIN,
             title:[title,'color:#fff;font-size:16px;font-weight:bold;letter-spacing:4px;'],
             content: [html,'yes'],
-            min:function(e){
-                $(".layui-layer-shade").css("display","none");
+            zIndex: layer.zIndex,
+            min:function(dom){
+                console.log(arguments);
+                var modaHide='layui-layer-shade'+dom.attr("id").split('layer')[1];
+                $(".layui-layer-shade#"+modaHide).css("display","none");
             },
-            restore:function () {
-                $(".layui-layer-shade").css("display","block");
+            restore:function (dom) {
+                var modaHide='layui-layer-shade'+dom.attr("id").split('layer')[1];
+                $(".layui-layer-shade#"+modaHide).css("display","block");
+            },
+            cancel: function(index1){
+                layer.close(index1);
+                return false;
+            },
+            success: function(layero){
+                layer.setTop(layero);
             }
         });
         pop&&layer.full(full);
