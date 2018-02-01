@@ -41,7 +41,7 @@
 
                     }
                 });
-                 MSConfig.Gdt("#showView");
+                MSConfig.Gdt("#showView");
                 var $searchableTree = $('#showView').treeview({
                     data: data
                 });
@@ -63,11 +63,12 @@
                         $('#showView').treeview('collapseAll', { silent: true });
                     } else {
                         $.each(results, function (index, result) {
-                          output += '<p data-node="'+result.nodeId+'" data-id="'+result.id+'" data-pid="'+result.pid+'" data-text="'+result.text+'">- ' + result.text + '</p>';
+                            output += '<p data-node="'+result.nodeId+'" data-id="'+result.id+'" data-pid="'+result.pid+'" data-text="'+result.text+'">- ' + result.text + '</p>';
                         });
                         $('#outputArea').html(output);
                         MSConfig.Gdt("#search-output");
                         $('#search-output').show();
+                        resizeIframeHeight();
                     }
                 };
                 $('#btn-search').on('click', searchCity);
@@ -78,6 +79,7 @@
                     $('#input-search').val('');
                     $('#outputArea').html("");
                     $('#search-output').hide();
+                    resizeIframeHeight();
                 });
                 $('#showView').on('nodeSelected', function(event, data) {
                     // 事件代码...
@@ -111,37 +113,29 @@
             }
         })
     }
-    getData();
-
-    // 添加移入动效
-    $(function(){
-        var table=$('.dataTables-show').DataTable( {
-            "aoColumnDefs": [
-                { "bSortable": false, "aTargets": [0,8] }
-            ] });
-         $('.dataTables-show').on('length.dt', function ( e, settings, len ) {
-            table.on('draw', function () {
-                var _height=$('body').outerHeight();
-                var iframe=window.frameElement;
-                iframe.style.height=_height+'px';
-            });
-        });
-        $(".ding-control-container").hover(function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).find(".control-btn-container").show();
-            var h=$(this).find(".control-btn").height();
-           $(this).find(".control-btn").css("lineHeight",h+"px");
-            $(this).find(".control-btn").removeClass("fadeOutRight").addClass("animated fadeInRight");
-        },
-       function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).find(".control-btn").removeClass("fadeInRight").addClass("fadeOutRight");
-           $(this).find(".control-btn-container").hide('500');
-        });
-        MSConfig.Gdt("#searchInput");
-    });
+    function resizeIframeHeight(){
+        var _height=$('body').outerHeight();
+        var iframe=window.frameElement;
+        iframe.style.height=_height+'px';
+    }
+    var table=$(".dataTables-show").DataTable({
+        "aoColumnDefs": [
+            { "bSortable": false, "aTargets": [0,8] }
+        ]});
+    var hoverIn=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).find(".control-btn-container").show();
+        var h=$(this).find(".control-btn").height();
+        $(this).find(".control-btn").css("lineHeight",h+"px");
+        $(this).find(".control-btn").removeClass("fadeOutRight").addClass("animated fadeInRight");
+    };
+    var hoverOut=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).find(".control-btn").removeClass("fadeInRight").addClass("fadeOutRight");
+        $(this).find(".control-btn-container").hide('500');
+    };
     var singleSelect=function () {
         var flag=true;
         $("input[name='checkbox_name[]']").each(function (i,v) {
@@ -186,7 +180,26 @@
         };
         MSConfig.SwalConfirm("error","删除","您确定要删除本行数据吗?",delinfo);
     };
+    var showSearchIfs=function(e){
+       resizeIframeHeight();
+    };
+    var hideSearchIfs=function(e){
+       resizeIframeHeight();
+    };
+    var dataDraw=function (e,settings, len ) {
+        table.on('draw', function () {
+            resizeIframeHeight();
+        });
+    };
+    $(function(){
+        getData();
+        MSConfig.Gdt("#searchInput");
+    });
+    $('#searchIfs').on('shown.bs.collapse', showSearchIfs);
+    $('#searchIfs').on('hidden.bs.collapse', hideSearchIfs);
     $(".dataTables-show").on("click","input[name='checkbox_name[]']",singleSelect);
     $(".dataTables-show").on("click",".userList_check_control",allSelect);
     $(".dataTables-show ").on("click",".control-btn .btn.tab-del",delOneLine);
+    $(".ding-control-container").hover(hoverIn,hoverOut);
+    $('.dataTables-show').on('length.dt', dataDraw);
 })(window, document, jQuery);

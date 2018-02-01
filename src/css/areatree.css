@@ -16,7 +16,7 @@ html,body{
 }
 #showView{
     overflow-y: auto;
-    max-height:300px;
+    max-height:600px;
     margin-right:-20px;
     margin-left: -12px;
     padding-bottom:10px;
@@ -67,4 +67,17 @@ html,body{
 }
 #searchInput .mCSB_container{
     margin-right:8px;
+}
+.table-see{
+    margin-top:15px;
+}
+#searchIfs .modal-footer{
+    margin-top:24px;
+}
+#searchIfs .modal-footer .options{
+    position: relative;
+    top:30px;
+}
+.jh-control{
+    padding-top:10px;
 }

@@ -67,6 +67,45 @@ var MSConfig=(function($,doc,win){
                 });
             },100);
         };
+    Config.Open=function (skin,html,width, height,defineTitle,pop) {
+        null != width && "" != width || (width = 800);
+        null != height && "" != height || (height= $(window).height() - 300);
+        var title="";
+        switch(skin){
+            case "add":
+                title="增加";
+                break;
+            case "edit":
+                title="编辑";
+                break;
+            case "look":
+                title="查看";
+                break;
+            case "detail":
+                title="详情";
+                break;
+            case "others":
+                title=defineTitle;
+                break;
+        }
+        full= layer.open({
+            skin:skin,
+            type: 2,
+            area: [width + "px", height + "px"],
+            fix: !1,
+            maxmin: !0,
+            shade:.4,
+            title:[title,'color:#fff;font-size:16px;font-weight:bold;letter-spacing:4px;'],
+            content: [html,'yes'],
+            min:function(e){
+                $(".layui-layer-shade").css("display","none");
+            },
+            restore:function () {
+                $(".layui-layer-shade").css("display","block");
+            }
+        });
+        pop&&layer.full(full);
+    };
         Config.Ajax=function(reqUrl,reqData,reqType,resType,contentType,reqTime){
         var AJAX=$.ajax({
             url:reqUrl,
@@ -104,4 +143,27 @@ var MSConfig=(function($,doc,win){
         };
         return Config;
 })(jQuery,document,window);
+
+$('.mdb-select').material_select();
+$('.datepicker').pickadate({
+    monthsFull: [ '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月' ],
+    monthsShort: [ '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二' ],
+    weekdaysFull: [ '星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六' ],
+    weekdaysShort: [ '日', '一', '二', '三', '四', '五', '六' ],
+    today: '今日',
+    clear: '清除',
+    close: '关闭',
+    firstDay: 1,
+    format: 'yyyy-mm-dd',
+    formatSubmit: 'yyyy/mm/dd',
+    selectMonths: true,
+    selectYears: true,
+    weekdaysLetter: [ '日', '一', '二', '三', '四', '五', '六' ],
+    labelMonthNext: '下一个月',
+    labelMonthPrev: '上一个月',
+    labelMonthSelect: '月份选择',
+    labelYearSelect: '年份选择',
+    min: new Date('1992-1-1'),
+    max: new Date('9999/12/12')
+});
 
