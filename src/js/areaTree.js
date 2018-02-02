@@ -99,6 +99,9 @@
                     MSConfig.Gdt("#showView");
                 });
                 $("#outputArea").on("click","p",function(e){
+                   if($(this).index()==0){
+                       return;
+                   }
                     e.stopPropagation();
                     $(this).addClass("activeShow").siblings("p").removeClass("activeShow");
                     var nodeId=$(this).data("node");
@@ -133,6 +136,8 @@
     var hoverOut=function(e){
         e.preventDefault();
         e.stopPropagation();
+        $(this).find(".control-btn-container").show();
+        var h=$(this).find(".control-btn").height();
         $(this).find(".control-btn").removeClass("fadeInRight").addClass("fadeOutRight");
         $(this).find(".control-btn-container").hide('500');
     };

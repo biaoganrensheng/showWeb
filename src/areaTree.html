@@ -16,7 +16,7 @@
     <!--TOOLTIP-->
     <link rel="stylesheet" href="plugins/TOOLTIP/css/tipso.min.css">
     <!--EASYForm-->
-    <link rel="stylesheet" href="plugins/EASYFORM/easyform.css">
+    <link rel="stylesheet" href="../test/js/easyform.css">
     <!--TABLE-->
     <link rel="stylesheet" href="plugins/TABLE/dataTables.bootstrap.css">
     <!-- MDB -->
@@ -150,9 +150,8 @@
            text-decoration: none;
        }
        body .add .layui-layer-title{background:#00C851; color:#fff; border: none;}
-       body .edit .layui-layer-title{background:#4285F4; color:#fff; border: none;}
+       body .edit .layui-layer-title{background:#ffbb33; color:#fff; border: none;}
        body .look .layui-layer-title{background:#aa66cc; color:#fff; border: none;}
-       body .detail .layui-layer-title{background:#ffbb33; color:#fff; border: none;}
        body .others .layui-layer-title{background:#ff4444; color:#fff; border: none;}
     </style>
 </head>
@@ -671,7 +670,6 @@
         </div>
     </div>
 </div>
-<script src="plugins/MOZ/modernizr-custom.js"></script>
 <!-- MDB -->
 <script type="text/javascript" src="plugins/MDB/js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="plugins/MDB/js/popper.min.js"></script>
@@ -705,6 +703,7 @@
     $("#ms-export").click(function(){
         MSConfig.Open("others","component/tpl/single.html","","","你好世界")
     });
+    //MSConfig.Toastr("success","<h1>dfasfdffasfasfdd</h1>",'8000','toast-top-full-width');
 
 </script>
 </body>

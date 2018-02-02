@@ -7,7 +7,7 @@ var MSConfig=(function($,doc,win){
                 "debug": false, // true/false
                 "newestOnTop": false, // true/false
                 "progressBar": false, // true/false
-                "positionClass": pos||"toast-top-right", // toast-top-right / toast-top-left / toast-bottom-right / toast-bottom-left
+                "positionClass": pos||"toast-top-right", // toast-top-right / toast-top-left / toast-bottom-right / toast-bottom-left/toast-top-full-width/toast-bottom-full-width
                 "preventDuplicates": false, //true/false
                 "onclick": null,
                 "showDuration": "300", // in milliseconds
@@ -67,7 +67,7 @@ var MSConfig=(function($,doc,win){
                 });
             },100);
         };
-    Config.Open=function (skin,html,width, height,defineTitle,pop) {
+        Config.Open=function (skin,html,width, height,defineTitle,pop) {
         null != width && "" != width || (width = 800);
         null != height && "" != height || (height= $(window).height() - 300);
         var title="",isFadeIN=0;
@@ -101,9 +101,14 @@ var MSConfig=(function($,doc,win){
             content: [html,'yes'],
             zIndex: layer.zIndex,
             min:function(dom){
-                console.log(arguments);
+                setTimeout(function(){
+                    var _left=Math.round(Math.random()*20+30)+"%";
+                    var _top=Math.round(Math.random()*20+20)+"%";
+                    dom.css({left:_left,top:_top})
+                },0);
                 var modaHide='layui-layer-shade'+dom.attr("id").split('layer')[1];
                 $(".layui-layer-shade#"+modaHide).css("display","none");
+
             },
             restore:function (dom) {
                 var modaHide='layui-layer-shade'+dom.attr("id").split('layer')[1];
@@ -118,6 +123,59 @@ var MSConfig=(function($,doc,win){
             }
         });
         pop&&layer.full(full);
+    };
+
+        Config.FormAjax=function(formDom,closeInfo){
+        var isThrought=false;
+        var showResponse=function(responseText, statusText){
+            if(responseText.status){
+                if(closeInfo){
+                    $("#ms-submit").attr("class","btn btn-light-grey disabled");
+                    var suc2=function(){
+                        MSConfig.SwalAlert("success","成功!","你已关闭成功");
+                        setTimeout(function(){
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                        },500);
+                    };
+                    var suc=function(){
+                        MSConfig.SwalConfirm("info","提示","您确定要关闭当前提交页吗？",suc2);
+                    };
+                    MSConfig.SwalConfirm("success",'成功','您已成功提交',suc);
+                }else{
+                    MSConfig.SwalAlert("success","成功!","你已关闭成功");
+                    setTimeout(function(){
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                    },500);
+                }
+
+            }else{
+                MSConfig.SwalAlert("error","错误!","发生错误,请检查后重新提交!")
+            }
+        };
+        var options = {
+            success:showResponse, // 提交后
+           // clearForm:false,        // 成功提交后，清除所有的表单元素的值.
+            // resetForm:false,        // 成功提交后，重置所有的表单元素的值.
+            timeout:   3000
+        };
+        if($(formDom).find("input[data-easyform]").length>0){
+            var eafm=$(formDom).easyform();
+            eafm.success = function(ef){
+                isThrought=true;
+            };
+            eafm.error = function(ef,dom){
+                $(dom).addClass("invalid");
+                isThrought=false;
+            };
+        }
+        $(formDom+" #ms-submit").click(function(e){
+            if(isThrought){
+                $(formDom).ajaxSubmit(options);
+            }
+        });
+
     };
         Config.Ajax=function(reqUrl,reqData,reqType,resType,contentType,reqTime){
         var AJAX=$.ajax({
@@ -178,5 +236,10 @@ $('.datepicker').pickadate({
     labelYearSelect: '年份选择',
     min: new Date('1992-1-1'),
     max: new Date('9999/12/12')
+});
+$('.initEasyForm .inputIsNull').on("focus",function(e){
+   e.preventDefault();
+   $(this).removeClass("invalid");
+   $(this).removeClass("valid");
 });
 

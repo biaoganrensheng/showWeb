@@ -1,5 +1,5 @@
-.easyform-close{background-image: url('close-normal.png'); width:20px !important; height: 20px !important; line-height: 20px !important;}
-.easyform-close:hover{background-image: url('close-over.png');}
+.easyform-close{ width:20px !important; height: 20px !important; line-height: 20px !important;}
+.easyform-close:hover{}
 
 .easytip-text, .easytip-text:before, .easytip-text:after{ box-sizing: content-box;}
 .easytip-arrow, .easytip-arrow:before, .easytip-arrow:after{box-sizing: content-box;}
