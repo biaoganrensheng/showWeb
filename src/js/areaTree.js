@@ -1,6 +1,104 @@
 (function (win, doc, $) {
     var parentTreeArr=[];
     //TODO: 模拟自定义数据
+    var table=$(".dataTables-show").DataTable({
+        "aoColumnDefs": [
+            { "bSortable": false, "aTargets": [0,8] }
+        ]});
+    var hoverIn=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).find(".control-btn-container").show();
+        var h=$(this).find(".control-btn").height();
+        $(this).find(".control-btn").css("lineHeight",h+"px");
+        $(this).find(".control-btn").removeClass("fadeOutRight").addClass("animated fadeInRight");
+    };
+    var hoverOut=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).find(".control-btn-container").show();
+        var h=$(this).find(".control-btn").height();
+        $(this).find(".control-btn").removeClass("fadeInRight").addClass("fadeOutRight");
+        $(this).find(".control-btn-container").hide('500');
+    };
+    var singleSelect=function () {
+        var flag=true;
+        $("input[name='checkbox_name[]']").each(function (i,v) {
+            if(false == $(v).is(':checked')){
+                $(".userList_check_control").prop("checked",false);
+                flag=false;
+            }
+        });
+        if(flag){
+            $(".userList_check_control").prop("checked",true);
+        }
+    };
+    var allSelect=function () {
+        if($('.userList_check_control').is(':checked') == true){
+            $("input[name='checkbox_name[]']").each( function() {
+                if(false == $(this).is(':checked')){
+                    $(this).prop("checked", true);
+                }
+            });
+        }
+        if($('.userList_check_control').is(':checked') == false){
+            $("input[name='checkbox_name[]']").each( function() {
+                if(true == $(this).is(':checked')){
+                    $(this).prop("checked", false);
+                }
+            });
+        }
+    };
+    var delOneLine=function(e){
+        e.preventDefault();
+        var line=$(this);
+        var delinfo=function(){
+            var url="../test/json/1.json";
+            MSConfig.Ajax(url,{},"POST")
+                .done(function(data){
+                    line.parents("tr").remove();
+                    MSConfig.SwalAlert("success","成功","删除成功!",1000);
+                })
+                .fail(function(error){
+                    MSConfig.SwalAlert("error","OMG", "删除操作失败了!");
+                });
+        };
+        MSConfig.SwalConfirm("error","删除","您确定要删除本行数据吗?",delinfo);
+    };
+    var showSearchIfs=function(e){
+       resizeIframeHeight();
+    };
+    var hideSearchIfs=function(e){
+       resizeIframeHeight();
+    };
+    var dataDraw=function (e,settings, len ) {
+        table.on('draw', function () {
+            resizeIframeHeight();
+        });
+    };
+    var getSelDom=function(dom,name,val){
+        console.log($(dom).find("[name='user']"))
+    };
+    var refData=function(e){
+        e.preventDefault();
+        $("#searchForm").ajaxSubmit(function(data) {
+            if(data.status){
+                //TODO (收起折叠条件)
+                $("#searchIfs").collapse("hide");
+                //TODO (展示当前的查询项目)
+                var aa= $('#searchForm').formSerialize();
+                var allArray= $('#searchForm').serializeArray();
+                console.log(decodeURIComponent(aa));
+                var html="";
+                $.each(allArray, function() {
+                    html+='<p><span>'+this.name+':</span><span>'+this.value+'</span></p>';
+                });
+                //console.log(html);
+                //TODO (更新dataTabel)
+            }
+        });
+        return false;
+    };
     function findPar(name){
         if(name){
             var obj=$('#showView').treeview('getParent',name);
@@ -99,9 +197,9 @@
                     MSConfig.Gdt("#showView");
                 });
                 $("#outputArea").on("click","p",function(e){
-                   if($(this).index()==0){
-                       return;
-                   }
+                    if($(this).index()==0){
+                        return;
+                    }
                     e.stopPropagation();
                     $(this).addClass("activeShow").siblings("p").removeClass("activeShow");
                     var nodeId=$(this).data("node");
@@ -121,81 +219,6 @@
         var iframe=window.frameElement;
         iframe.style.height=_height+'px';
     }
-    var table=$(".dataTables-show").DataTable({
-        "aoColumnDefs": [
-            { "bSortable": false, "aTargets": [0,8] }
-        ]});
-    var hoverIn=function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).find(".control-btn-container").show();
-        var h=$(this).find(".control-btn").height();
-        $(this).find(".control-btn").css("lineHeight",h+"px");
-        $(this).find(".control-btn").removeClass("fadeOutRight").addClass("animated fadeInRight");
-    };
-    var hoverOut=function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).find(".control-btn-container").show();
-        var h=$(this).find(".control-btn").height();
-        $(this).find(".control-btn").removeClass("fadeInRight").addClass("fadeOutRight");
-        $(this).find(".control-btn-container").hide('500');
-    };
-    var singleSelect=function () {
-        var flag=true;
-        $("input[name='checkbox_name[]']").each(function (i,v) {
-            if(false == $(v).is(':checked')){
-                $(".userList_check_control").prop("checked",false);
-                flag=false;
-            }
-        });
-        if(flag){
-            $(".userList_check_control").prop("checked",true);
-        }
-    };
-    var allSelect=function () {
-        if($('.userList_check_control').is(':checked') == true){
-            $("input[name='checkbox_name[]']").each( function() {
-                if(false == $(this).is(':checked')){
-                    $(this).prop("checked", true);
-                }
-            });
-        }
-        if($('.userList_check_control').is(':checked') == false){
-            $("input[name='checkbox_name[]']").each( function() {
-                if(true == $(this).is(':checked')){
-                    $(this).prop("checked", false);
-                }
-            });
-        }
-    };
-    var delOneLine=function(e){
-        e.preventDefault();
-        var line=$(this);
-        var delinfo=function(){
-            var url="../test/json/1.json";
-            MSConfig.Ajax(url,{},"POST")
-                .done(function(data){
-                    line.parents("tr").remove();
-                    MSConfig.SwalAlert("success","成功","删除成功!",1000);
-                })
-                .fail(function(error){
-                    MSConfig.SwalAlert("error","OMG", "删除操作失败了!");
-                });
-        };
-        MSConfig.SwalConfirm("error","删除","您确定要删除本行数据吗?",delinfo);
-    };
-    var showSearchIfs=function(e){
-       resizeIframeHeight();
-    };
-    var hideSearchIfs=function(e){
-       resizeIframeHeight();
-    };
-    var dataDraw=function (e,settings, len ) {
-        table.on('draw', function () {
-            resizeIframeHeight();
-        });
-    };
     $(function(){
         getData();
         MSConfig.Gdt("#searchInput");
@@ -207,4 +230,5 @@
     $(".dataTables-show ").on("click",".control-btn .btn.tab-del",delOneLine);
     $(".ding-control-container").hover(hoverIn,hoverOut);
     $('.dataTables-show').on('length.dt', dataDraw);
+    $("#searchIfs").on("click","#ms-search",refData);
 })(window, document, jQuery);

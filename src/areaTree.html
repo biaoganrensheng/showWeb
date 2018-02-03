@@ -205,60 +205,98 @@
             <div class="card">
                 <h6 class="card-header primary-color white-text" data-toggle="collapse" data-target="#searchIfs">条件查询 <i class="fa fa-search pull-right" aria-hidden="true"></i></h6>
                 <div class="card-body collapse" id="searchIfs">
-                    <form action="">
+                    <form action="http://192.168.0.114:8080/demo/upFile/test" method="post" id="searchForm">
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="md-form">
-                                    <input type="text" id="form41" class="form-control" placeholder="sdjfhfjh">
-                                    <label for="form41" class="">姓名</label>
+                                    <input type="text" id="user" name="user" class="form-control" placeholder="sdjfhfjh">
+                                    <label for="user">姓名</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="md-form">
-                                    <input type="text" id="form51" class="form-control">
-                                    <label for="form51" class="">电话</label>
+                                    <input type="tel" id="tel" name="tel" class="form-control">
+                                    <label for="tel">电话</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="md-form">
-                                    <input type="text" id="form61" class="form-control">
-                                    <label for="form61" class="">地址</label>
+                                    <input type="text" id="address" name="address" class="form-control">
+                                    <label for="address">地址</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="md-form">
-                                    <input type="text" id="form71" class="form-control">
-                                    <label for="form71" class="">爱好</label>
+                                    <input type="text" id="love" name="love" class="form-control">
+                                    <label for="love" >爱好</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="md-form">
-                                    <input type="text" id="form81" class="form-control">
-                                    <label for="form81" class="">电话</label>
+                                    <input type="text" id="email" name="email" class="form-control">
+                                    <label for="email">邮箱</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="md-form">
-                                    <input type="text" id="form91" class="form-control">
-                                    <label for="form91" class="">地址</label>
+                                    <input type="text" name="job" id="job" class="form-control">
+                                    <label for="job">任务</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="md-form">
-                                    <input type="text" id="form100" class="form-control">
-                                    <label for="form100" class="">爱好</label>
+                                <div class="form-inline md-form">
+                                    <div class="form-group">
+                                        <input type="checkbox" class="filled-in" name="zq" id="zq" value="足球" checked>
+                                        <label for="zq">足球</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" class="filled-in" name="zq" id="lq" value="篮球">
+                                        <label for="lq">篮球</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" class="filled-in" name="zq" id="ppq" value="乒乓球" checked>
+                                        <label for="ppq">乒乓球</label>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-inline md-form">
+
+                                    <div class="form-group">
+                                        <input name="group2" type="radio" class="with-gap" id="radio1" value="百度">
+                                        <label for="radio1">百度</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input name="group2" type="radio" class="with-gap" id="radio2" value="谷歌" checked>
+                                        <label for="radio2">谷歌</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input name="group2" type="radio" class="with-gap" id="radio3" value="ie">
+                                        <label for="radio3">ie</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <select name="animal" class="mdb-select colorful-select dropdown-primary">
+                                    <option value="猫" name="mao">猫</option>
+                                    <option value="狗" name="gou">狗</option>
+                                    <option value="熊" name="xiong">熊</option>
+                                    <option value="兔子" name="tu" selected>兔子</option>
+                                    <option value="大象" name="xiang">大象</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="options">
+                                <p>
+                                    <button type="submit" class="btn btn-success btn-md" id="ms-search">搜素</button>
+                                    <button type="reset" class="btn btn-warning btn-md" id="ms-reset">重置</button>
+                                </p>
                             </div>
                         </div>
                     </form>
-                    <div class="modal-footer">
-                        <div class="options">
-                            <p>
-                                <button class="btn btn-success btn-md">搜素</button>
-                                <button class="btn btn-warning btn-md">重置</button>
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="card table-see">
