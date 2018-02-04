@@ -76,8 +76,9 @@
             resizeIframeHeight();
         });
     };
-    var getSelDom=function(dom,name,val){
-        console.log($(dom).find("[name='user']"))
+    var getSelDom=function(dom,name){
+        var text=$(dom).find("[name='"+name+"']").parents(".showLabel").find("label").text();
+        return text;
     };
     var refData=function(e){
         e.preventDefault();
@@ -86,14 +87,13 @@
                 //TODO (收起折叠条件)
                 $("#searchIfs").collapse("hide");
                 //TODO (展示当前的查询项目)
-                var aa= $('#searchForm').formSerialize();
                 var allArray= $('#searchForm').serializeArray();
-                console.log(decodeURIComponent(aa));
-                var html="";
+                var html="<div class='hozShowResult'>";
                 $.each(allArray, function() {
-                    html+='<p><span>'+this.name+':</span><span>'+this.value+'</span></p>';
+                    html+='<p><span class="nameT">'+getSelDom("#searchForm",this.name)+':</span><span>'+(this.value==""?"没有数据":this.value)+'</span></p>';
                 });
-                //console.log(html);
+                html+="</div>";
+                MSConfig.Toastr("success",html,"50000","toast-top-full-width");
                 //TODO (更新dataTabel)
             }
         });

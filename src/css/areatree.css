@@ -82,3 +82,18 @@ html,body{
 .jh-control{
     padding-top:10px;
 }
+.hozShowResult{
+   /* display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;*/
+    overflow: hidden;
+}
+.hozShowResult p{
+    float: left;
+    margin-right: 16px;
+}
+.hozShowResult p .nameT{
+    color:#45526E;
+    font-weight: 600;
+}

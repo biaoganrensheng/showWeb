@@ -9,7 +9,7 @@ var MSConfig=(function($,doc,win){
                 "progressBar": false, // true/false
                 "positionClass": pos||"toast-top-right", // toast-top-right / toast-top-left / toast-bottom-right / toast-bottom-left/toast-top-full-width/toast-bottom-full-width
                 "preventDuplicates": false, //true/false
-                "onclick": null,
+                 "onclick": null,
                 "showDuration": "300", // in milliseconds
                 "hideDuration": "1000", // in milliseconds
                 "timeOut": time||"5000", // in milliseconds
