@@ -7,7 +7,7 @@ var MSConfig = (function($, doc, win) {
      * [用作内容的提示，可自定义显示时间和位置]
      * @param  {[string]} state   [代表当前提示框的状态 分别是成功、失败、警告、提示(success/error/warning/info) 缺省:必填]
      * @param  {[string]} content [定义提示的内容支持html 缺省:必填]
-     * @param  {[string Number]} time    [定义提示框显示的时间 单位毫秒 缺省:5000 注：如果这个值为0 则弹框不消失]
+     * @param  {[string]} time    [定义提示框显示的时间 单位毫秒 缺省:5000 注：如果这个值为0 则弹框不消失]
      * @param  {[string]} pos     [定义提示框出现的位置 支持左上、左下、右上、右下、全屏上、全屏下(toast-top-left/toast-bottom-left/toast-top-right/toast-bottom-right/toast-top-full-width/toast-bottom-full-width/) 缺省:toast-top-right]
      */
 
@@ -42,8 +42,8 @@ var MSConfig = (function($, doc, win) {
      * [用作弹框的确认]
      * @param  {[string]} icon   [代表当前弹框的状态 分别是成功、失败、警告、提示(success/error/warning/info) 缺省:提示状态]
      * @param  {[string]} title [定义提示框的title 缺省:‘友情提示’]
-     * @param  {[string]} text    [定义提示框内容 缺省:为空]
-     * @param  {[string]} fn1     [点击确定(ok)以后的回调函数 缺省:空]
+     * @param  {[string]} content    [定义提示框内容 缺省:为空]
+     * @param  {[obj]} fn1     [点击确定(ok)以后的回调函数 缺省:空]
      */
     Config.SwalConfirm = function(state, title, content, fn1) {
         swal({
@@ -252,11 +252,11 @@ var MSConfig = (function($, doc, win) {
     /**
      * [用作ajax的封装]
      * @param  {[string]} reqUrl   [请求的url地址 缺省：必填]
-     * @param  {[string]} reqData   [请求传递的参数对象 缺省:空]
+     * @param  {[obj]} reqData   [请求传递的参数对象 缺省:空]
      * @param  {[string]} reqType   [请求类型 缺省:'GET']
      * @param  {[string]} resType   [返回的数据格式 缺省:'json']
      * @param  {[string]} contentType   [请求头文件格式 缺省:'application/x-www-form-urlencoded']
-     * @param  {[string]} reqTime   [超时时间 单位(毫秒) 缺省:3000]
+     * @param  {[number]} reqTime   [超时时间 单位(毫秒) 缺省:3000]
      */
     Config.Ajax = function(reqUrl, reqData, reqType, resType, contentType, reqTime) {
         var AJAX = $.ajax({
@@ -306,27 +306,30 @@ var MSConfig = (function($, doc, win) {
     };
     return Config;
 })(jQuery, document, window);
+if($('.mdb-select').length>0){
+    $('.mdb-select').material_select();
+}
+if($('.datepicker').length>0){
+    $('.datepicker').pickadate({
+        monthsFull: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        monthsShort: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'],
+        weekdaysFull: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        weekdaysShort: ['日', '一', '二', '三', '四', '五', '六'],
+        today: '今日',
+        clear: '清除',
+        close: '关闭',
+        firstDay: 1,
+        format: 'yyyy-mm-dd',
+        formatSubmit: 'yyyy/mm/dd',
+        selectMonths: true,
+        selectYears: true,
+        weekdaysLetter: ['日', '一', '二', '三', '四', '五', '六'],
+        labelMonthNext: '下一个月',
+        labelMonthPrev: '上一个月',
+        labelMonthSelect: '月份选择',
+        labelYearSelect: '年份选择',
+        min: new Date('1992-1-1'),
+        max: new Date('9999/12/12')
+    });
+}
 
-$('.mdb-select').material_select();
-
-$('.datepicker').pickadate({
-    monthsFull: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
-    monthsShort: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'],
-    weekdaysFull: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
-    weekdaysShort: ['日', '一', '二', '三', '四', '五', '六'],
-    today: '今日',
-    clear: '清除',
-    close: '关闭',
-    firstDay: 1,
-    format: 'yyyy-mm-dd',
-    formatSubmit: 'yyyy/mm/dd',
-    selectMonths: true,
-    selectYears: true,
-    weekdaysLetter: ['日', '一', '二', '三', '四', '五', '六'],
-    labelMonthNext: '下一个月',
-    labelMonthPrev: '上一个月',
-    labelMonthSelect: '月份选择',
-    labelYearSelect: '年份选择',
-    min: new Date('1992-1-1'),
-    max: new Date('9999/12/12')
-});
