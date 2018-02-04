@@ -3,21 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../css/toastr.css">
     <style>
         html,body{
             margin:0;
             padding:0;
             width: 100%;
-            background-color: #0d5bdd;
+            /*background-color: #0d5bdd;*/
         }
     </style>
 </head>
 <body>
-<h1>数据中心1</h1>
+<h1 class="dd">数据中心1</h1>
 <script src="../../src/plugins/MDB/js/jquery-3.2.1.min.js"></script>
+<script src="../js/toastr.js"></script>
 <script>
-    var h=Math.floor(Math.random()*1000+500);
-    $("h1").height(h);
+    function aa(state,content){
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut":'0',
+            "extendedTimeOut":'0',
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut",
+            "tapToDismiss": false
+        };
+        toastr[state](content);
+    }
+    $(".dd").click(function(e){
+        e.stopPropagation();
+        aa("success","ahfashfjsasfasdfsadfsadfk");
+    })
+  /*  var h=Math.floor(Math.random()*1000+500);
+    $("h1").height(h);*/
 </script>
 </body>
 </html>

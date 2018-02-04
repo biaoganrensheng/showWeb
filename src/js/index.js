@@ -9,7 +9,7 @@
     // 定义操作按钮的数组
     var _btnArr = [];
     $(function() {
-        // TODO 初始化 页面的滚动条(回到顶部)    
+        // TODO 初始化 页面的滚动条(回到顶部)
         pageScroll();
         // TODO 请求模板数据渲染模板
         MSConfig.Ajax("test/json/navbar.json")
@@ -236,6 +236,14 @@
         var _pos = "." + _moreBtnJudge;
         appendBtnIframe(_moreBtnText, _moreBtnJudge, _moreTabHref);
         initTabScroll(_pos);
+    };
+    // moreTab hover 事件
+    var moreHover=function(dom){
+        $("#li_more>div a").removeClass("pressed");
+        $("#"+dom.target.id).addClass("pressed");
+        var index=$(this).index();
+        $(".tool-container.tool-right.toolbar-primary.animate-flip").css("display","none");
+        $(".tool-container.tool-right.toolbar-primary.animate-flip:eq("+index+")").css("display","block");
     };
     // 关闭标签页
     var closeCur = function(e) {
@@ -495,6 +503,7 @@
     $(".btn-container-items").on("click", ".btn i", delBtn);
     $(".btn-container-items").on("click", ".btn", changeTabIframe);
     $("body").on('toolbarItemClick', "#li_more>div a", moreTab);
+    $("body").on('toolbarShown', "#li_more>div a", moreHover);
     $("body").on("click", "#close_cur", closeCur);
     $("body").on("click", "#close_other", closeOther);
     $("body").on("click", "#close_all", closeAll);

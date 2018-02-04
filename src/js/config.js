@@ -7,12 +7,16 @@ var MSConfig = (function($, doc, win) {
      * [用作内容的提示，可自定义显示时间和位置]
      * @param  {[string]} state   [代表当前提示框的状态 分别是成功、失败、警告、提示(success/error/warning/info) 缺省:必填]
      * @param  {[string]} content [定义提示的内容支持html 缺省:必填]
-     * @param  {[string]} time    [定义提示框显示的时间 单位毫秒 缺省:5000]
+     * @param  {[string Number]} time    [定义提示框显示的时间 单位毫秒 缺省:5000 注：如果这个值为0 则弹框不消失]
      * @param  {[string]} pos     [定义提示框出现的位置 支持左上、左下、右上、右下、全屏上、全屏下(toast-top-left/toast-bottom-left/toast-top-right/toast-bottom-right/toast-top-full-width/toast-bottom-full-width/) 缺省:toast-top-right]
      */
 
     Config.Toastr = function(state, content, time, pos) {
         toastr.clear();
+        if(time==0){
+            var time2;
+            time2=time;
+        }
         toastr.options = {
             "closeButton": true, // true/false
             "debug": false, // true/false
@@ -23,12 +27,13 @@ var MSConfig = (function($, doc, win) {
             "onclick": null,
             "showDuration": "300", // in milliseconds
             "hideDuration": "1000", // in milliseconds
-            "timeOut": time || "5000", // in milliseconds
-            "extendedTimeOut": "1000", // in milliseconds
+            "timeOut": time||"5000", // in milliseconds
+            "extendedTimeOut":time2||"1000", // in milliseconds
             "showEasing": "swing",
             "hideEasing": "linear",
             "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
+            "hideMethod": "fadeOut",
+            "tapToDismiss":false
         };
         toastr[state](content);
     };

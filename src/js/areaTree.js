@@ -97,6 +97,7 @@
     // 点击条件按钮的搜索后，要执行的操作(TODO 方式列出)
     var refData = function(e) {
         e.preventDefault();
+        e.stopPropagation();
         $("#searchForm").ajaxSubmit(function(data) {
             if (data.status) {
                 // TODO (收起折叠条件)
@@ -105,10 +106,12 @@
                 var allArray = $('#searchForm').serializeArray();
                 var html = "<div class='hozShowResult'>";
                 $.each(allArray, function() {
-                    html += '<p><span class="nameT">' + getSelDom("#searchForm", this.name) + ':</span><span>' + (this.value == "" ? "没有数据" : this.value) + '</span></p>';
+                    if(!this.value == ""){
+                        html += '<p><span class="nameT">' + getSelDom("#searchForm", this.name) + ':</span><span>' + this.value + '</span></p>';
+                    }
                 });
                 html += "</div>";
-                MSConfig.Toastr("success", html, "50000", "toast-top-full-width");
+                MSConfig.Toastr("success", html,'0', "toast-top-full-width");
                 // TODO (更新dataTabel)
             }
         });
